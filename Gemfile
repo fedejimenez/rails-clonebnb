@@ -40,6 +40,9 @@ gem "clearance"
 # gem 'bootstrap', '~> 4.1.1'
 gem 'bootstrap-sass', '~> 3.2.0'
 
+# Use Jquery
+gem 'jquery-rails'
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
