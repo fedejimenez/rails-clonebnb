@@ -3,18 +3,27 @@ Rails.application.routes.draw do
   resource :session, controller: "clearance/sessions", only: [:create]
 
   resources :users, controller: "clearance/users", only: [:create] do
-    resource :password,
+    resource :password, # doesnt generate id for password
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
   end
+
+  root 'pages#index'
+end
+
+  
+  # resources :users, controller: "users", only: [:create] do
+  #   resource :password, # doesnt generate id for password
+  #     controller: "clearance/passwords",
+  #     only: [:create, :edit, :update]
+  # end
 
   # get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   # delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
   # get "/sign_up" => "clearance/users#new", as: "sign_up"
   
-  # get 'pages/index'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'pages#index'
 
   # devise_for :users,
   #            path: '',
@@ -24,13 +33,13 @@ Rails.application.routes.draw do
   #                registrations: 'registrations'
   #            }
 
-  resources :users, only: :show
-  resources :rooms
-  resources :photos
+  # resources :users, only: :show
 
-  resources :rooms do
-    resources :reservations, only: [:create]
-  end
+  # resources :rooms
+  # resources :photos
 
-  get '/preload' => 'reservations#preload'
-end
+  # resources :rooms do
+  #   resources :reservations, only: [:create]
+  # end
+
+  # get '/preload' => 'reservations#preload'

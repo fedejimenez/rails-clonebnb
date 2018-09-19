@@ -52,7 +52,7 @@ en:
       forgot_password: Forgot password?
       sign_up: Sign up
     new:
-      title: Sign in
+      title: Log in to continue
   users:
     new:
       sign_in: Sign in

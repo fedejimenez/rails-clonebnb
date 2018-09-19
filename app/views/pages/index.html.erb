@@ -1,2 +1,14 @@
-<div class="page-header"><h1>Welcome!</h1></div>
-<p>Find me in app/views/pages/index.html.erb</p>
+<div class="page-header">
+	<h1>Welcome! 
+		<span><%= current_user.full_name %></span>
+	</h1>
+</div>
+
+<%= button_to ("Sign out"), sign_out_path, method: :delete, class: 'btn btn-primary' %>
+
+
+
+
+
+
+

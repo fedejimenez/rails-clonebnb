@@ -1,6 +1,5 @@
-<div id="clearance" class="sign-up">
+<div id="clearance" class="sign-up form-group">
   <h2><%= t(".title") %></h2>
-
   <%= form_for @user do |form| %>
     <%= render partial: '/users/form', object: form %>
 
@@ -13,3 +12,5 @@
     </div>
   <% end %>
 </div>
+
+
