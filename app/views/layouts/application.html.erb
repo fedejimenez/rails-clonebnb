@@ -49,17 +49,23 @@
 						<div class="modal-dialog" role="document">
 							<div class="modal-content">
 								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<button type="button" class="close" data-dismiss="modal" aria-label="">
 										<span aria-hidden="true">×</span>
 									</button>
 								</div>
 								<div class="modal-body">
-									<button class="btn-fb"> <i class="fa fa-fw fa-facebook pull-left" aria-hidden="true"></i>
-										Login with Facebook	
-									</button> <br>	
-									<button class="btn-gp"> <i class="fa fa-fw fa-google-plus pull-left" aria-hidden="true"></i>
-										Login with Google	
-									</button> <br>	
+									<%= button_tag onclick: "location.href='/auth/facebook'",
+									  type: :button, class: "btn-fb" do %>
+									  <i class="fa fa-fw fa-facebook" aria-hidden="true"></i>
+									  <%= t('.Login_with_Facebook')%>
+									<% end %>
+
+									<%= button_tag onclick: "location.href='/auth/google_oauth2'",
+									  type: :button, class: "btn-gp" do %>
+									  <i class="fa fa-fw fa-google-plus" aria-hidden="true"></i>
+									  <%= t('.Login_with_Google')%>
+									<% end %>
+
 									<div class="signup-or-separator">
 										<span class="h6 signup-or-separator--text">or</span>
 										<hr>
@@ -101,17 +107,25 @@
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
 								</div>
 								<div class="modal-body">
-									<button class="btn-fb"> <i class="fa fa-fw fa-facebook pull-left" aria-hidden="true"></i>
-										Signup with Facebook	
-									</button> <br>	
-									<button class="btn-gp"> <i class="fa fa-fw fa-google-plus pull-left" aria-hidden="true"></i>
-											Signup with Google	
-									</button> <br>	
+									<%= button_tag onclick: "location.href='/auth/google_oauth2'",
+									  type: :button, class: "btn-fb" do %>
+									  <i class="fa fa-fw fa-facebook" aria-hidden="true"></i>
+									  <%= t('.Sign_up_with_Facebook')%>
+									<% end %>
+
+									<%= button_tag onclick: "location.href='/auth/google_oauth2'",
+									  type: :button, class: "btn-gp" do %>
+									  <i class="fa fa-fw fa-google-plus" aria-hidden="true"></i>
+									  <%= t('.Sign_up_with_Google')%>
+									<% end %>
+
 									<div class="signup-or-separator">
 										<span class="h6 signup-or-separator--text">or</span>
 										<hr>
 									</div>
-									<button type="submit" class="btn-lgin" data-toggle="modal"  data-dismiss="modal" data-target="#at-signup-filling">Signup with Email
+									<button type="submit" class="btn-lgin" data-toggle="modal"  data-dismiss="modal" data-target="#at-signup-filling">
+									<i class="fa fa-envelope" aria-hidden="true"></i>
+									Signup with Email
 									</button> <hr>	
 									<p>By signing up, I agree to Airbnb’s , Payments <a href="#">Terms of Service</a>, <a href="#">Privacy Policy</a>, <a href="#">Guest Refund Policy</a>, and <a href="#">Host Guarantee Terms</a>. </p>
 								</div>

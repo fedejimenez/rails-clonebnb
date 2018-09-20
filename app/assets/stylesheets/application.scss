@@ -131,7 +131,7 @@
     -ms-user-select: none;
     user-select: none;
     background-image: none;
-    border: 1px solid #eee;
+    border: 1px solid #333;
     border-radius: 0px;
     background-color: #FFFFFF;
     width: 100%;
@@ -162,6 +162,12 @@
     width: 100%;
     margin-top: 10px;
     color: #fff;
+  }
+  .close span{
+    font-size: 60px;
+    line-height: 0.5;
+    text-shadow: 2px 2px 2px #1b2538;
+    opacity: .8;
   }
   .signup-or-separator {
     background: none;
@@ -240,9 +246,10 @@
   }
   .modal-content {
     padding: 0px 10px;
+    border: 2px solid #ccc;
   }
   .modal-header {
-    padding: 10px 10px;
+    padding: 30px 30px;
     border-bottom: 0px solid #e5e5e5;
   }
 }

@@ -1,10 +1,8 @@
 class User < ApplicationRecord
   include Clearance::User
 
-
   has_many :rooms
   has_many :reservations
-
   # has_secure_password
 
   before_save { |user| user.email = email.downcase }
@@ -14,6 +12,37 @@ class User < ApplicationRecord
   format: { with: VALID_EMAIL_REGEX },
   uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }
+
+
+  has_many :authentications, dependent: :destroy
+
+  def self.create_with_auth_and_hash(authentication, auth_hash)
+   user = self.create!(
+     full_name: auth_hash["info"]["name"],
+     email: auth_hash["info"]["email"],
+     password: SecureRandom.hex(10)
+   )
+   user.authentications << authentication
+   return user
+  end
+
+  # grab google to access google for user data
+  def google_token
+   x = self.authentications.find_by(provider: 'google_oauth2')
+   return x.token unless x.nil?
+  end
+
+  # grab facebook to access facebook for user data
+  def fb_token
+    x = self.authentications.where(:provider => :facebook).first
+    return x.token unless x.nil?
+  end
+
+  def password_optional?
+    true
+  end
+end
+
   # validates :password_confirmation, presence: true
 
   # def self.from_omniauth(auth)
@@ -31,4 +60,4 @@ class User < ApplicationRecord
   #     end
   #   end
   # end
-end
+

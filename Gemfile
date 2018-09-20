@@ -31,7 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+# gem 'capistrano-rails', group: :de`velopment
 
 #Use Clearance Engine (Rails authentication with email & password)
 gem "clearance"
@@ -47,6 +47,14 @@ gem 'jquery-rails'
 
 # Use Figaro
 gem 'figaro'
+
+# Use Omniauth 
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-linkedin'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
