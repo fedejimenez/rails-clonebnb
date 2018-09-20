@@ -1,19 +1,19 @@
 <div class="text-field">
-	<%= form.label :full_name %>
-  	<%= form.text_field :full_name, type: 'text', class: 'form-control', placeholder: 'John Doe'  %>
+  	<%= form.text_field :full_name, type: 'text', class: 'form-control-form', placeholder: 'Full Name'  %>
     <small id="" class="form-text text-muted">(We'll never share your email with anyone else.)</small>
 </div>
 
 <div class="text-field">
-  <%= form.label :email %>
-  <%= form.text_field :email, type: 'email', class: 'form-control', placeholder: 'John_Doe@jd.com'%>
+    <%= form.text_field :email, type: 'email', class: 'form-control-form', placeholder: 'Email'%>
 </div>
 
 <div class="password-field">
-  <%= form.label :password %>
-  <%= form.password_field :password, class: 'form-control' %>
+    <%= form.password_field :password, class: 'form-control-form', placeholder: 'Password' %>
 </div>
-<div class="form-check">
-	<input type="checkbox" class="form-check-input" id="exampleCheck">
-	<label class="form-check-label" for="">Check me out</label>
+
+<div class="submit-field">
+    <%= form.submit :'Sign Up', class: 'btn-lgin', placeholder: 'Login'  %>
 </div>
+
+
+

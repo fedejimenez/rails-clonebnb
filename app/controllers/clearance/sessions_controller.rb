@@ -25,7 +25,8 @@ class Clearance::SessionsController < Clearance::BaseController
         redirect_back_or url_after_create
       else
         flash.now.notice = status.failure_message
-        render template: "sessions/new", status: :unauthorized
+        # render template: "sessions/new", status: :unauthorized
+        render template: "pages/index", status: :unauthorized
       end
     end
   end
@@ -52,7 +53,8 @@ class Clearance::SessionsController < Clearance::BaseController
   end
 
   def url_after_destroy
-    sign_in_url
+    # sign_in_url
+    '/'
   end
 
   def url_for_signed_in_users

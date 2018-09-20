@@ -2,14 +2,13 @@ Rails.application.routes.draw do
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
-  resources :users, controller: "clearance/users", only: [:create] do
+  resources :users, controller: "clearance/users", only: [:create, :new] do
     resource :password, # doesnt generate id for password
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
   end
 
   root 'pages#index'
-end
 
   
   # resources :users, controller: "users", only: [:create] do
@@ -33,13 +32,14 @@ end
   #                registrations: 'registrations'
   #            }
 
-  # resources :users, only: :show
+  resources :users, only: :show
 
-  # resources :rooms
-  # resources :photos
+  resources :rooms
+  resources :photos
 
-  # resources :rooms do
-  #   resources :reservations, only: [:create]
-  # end
+  resources :rooms do
+    resources :reservations, only: [:create]
+  end
 
-  # get '/preload' => 'reservations#preload'
+  get '/preload' => 'reservations#preload'
+end

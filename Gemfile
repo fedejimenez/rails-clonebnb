@@ -40,12 +40,16 @@ gem "clearance"
 # gem 'bootstrap', '~> 4.1.1'
 gem 'bootstrap-sass', '~> 3.2.0'
 
+# Use fontawesome
+gem 'font-awesome-rails'
 # Use Jquery
 gem 'jquery-rails'
 
-
+# Use Figaro
+gem 'figaro'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
