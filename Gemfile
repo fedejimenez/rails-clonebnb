@@ -50,6 +50,10 @@ gem 'figaro'
 
 # Use faker
 gem 'faker', :git => 'https://github.com/stympy/faker.git'
+
+# Use pagination
+gem 'kaminari'
+
 # Use Omniauth 
 gem 'omniauth'
 gem 'omniauth-google-oauth2'

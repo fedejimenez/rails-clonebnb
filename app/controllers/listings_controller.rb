@@ -14,7 +14,8 @@ class ListingsController < ApplicationController
     if current_user
       @listings = Listing.not_belonging_to_current_user(current_user.id)
     else
-      @listings = Listing.all
+      # @listings = Listing.all
+      @listings = Listing.order(:name).page(params[:page]).per(10)
     end
   end
   

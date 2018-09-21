@@ -4,21 +4,21 @@ class Listing < ActiveRecord::Base
 	# Associations
   belongs_to :user
 
-  # scope :not_belonging_to_current_user, lambda { |current_user_id| 
-  #   { :conditions => ["user_id != ?", current_user_id] }
-  # }
+  scope :not_belonging_to_current_user, lambda { |current_user_id| 
+    { :conditions => ["user_id != ?", current_user_id] }
+  }
 
-  # scope :apply_full_search_criteria, lambda { |place, guests_count, check_in, check_out| 
-  #   {
-  #     :conditions => ["place = ? and maximum_guests >= ? and availability_from <= ? and availability_to >= ? ", place, guests_count, check_in, check_out]
-  #   }
-  # }
+  scope :apply_full_search_criteria, lambda { |place, guests_count, check_in, check_out| 
+    {
+      :conditions => ["place = ? and maximum_guests >= ? and availability_from <= ? and availability_to >= ? ", place, guests_count, check_in, check_out]
+    }
+  }
 
-  # scope :apply_place_search_criteria, lambda { |place| 
-  #   {
-  #     :conditions => ["place = ?", place] 
-  #   }
-  # }
+  scope :apply_place_search_criteria, lambda { |place| 
+    {
+      :conditions => ["place = ?", place] 
+    }
+  }
 
   has_many :reservations,:dependent => :destroy
 
