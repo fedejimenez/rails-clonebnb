@@ -81,3 +81,10 @@ To set up your rails app, I recommend adding this to your environments/developme
 
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+
+
+====================================================
+
+GIT
+
+https://github.com/Kunena/Kunena-Forum/wiki/Create-a-new-branch-with-git-and-manage-branches

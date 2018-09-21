@@ -1,6 +1,7 @@
 require 'active_support/deprecation'
 
-class Clearance::PasswordsController < Clearance::BaseController
+# class Clearance::PasswordsController < Clearance::BaseController
+class PasswordsController < Clearance::PasswordsController
 
   if respond_to?(:before_action)
     skip_before_action :require_login,

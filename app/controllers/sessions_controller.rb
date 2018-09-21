@@ -1,4 +1,5 @@
-class Clearance::SessionsController < Clearance::BaseController
+# class Clearance::SessionsController < Clearance::BaseController
+ class SessionsController < Clearance::SessionsController
   
   if respond_to?(:before_action)
     before_action :redirect_signed_in_users, only: [:new]
@@ -56,7 +57,7 @@ class Clearance::SessionsController < Clearance::BaseController
   end
 
   def destroy
-    # sign_out
+    sign_out
     redirect_to url_after_destroy
   end
 
@@ -78,7 +79,7 @@ class Clearance::SessionsController < Clearance::BaseController
 
   def url_after_destroy
     # sign_in_url
-    '/'
+    '/' 
   end
 
   def url_for_signed_in_users
