@@ -48,6 +48,8 @@ gem 'jquery-rails'
 # Use Figaro
 gem 'figaro'
 
+# Use faker
+gem 'faker', :git => 'https://github.com/stympy/faker.git'
 # Use Omniauth 
 gem 'omniauth'
 gem 'omniauth-google-oauth2'

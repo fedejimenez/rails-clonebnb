@@ -7,8 +7,7 @@ class CreateListings < ActiveRecord::Migration[5.2]
       t.string :property_type, null: false
       t.integer :room_number, null: false
       t.integer :bed_number, null: false
-      t.string :guest, null: false
-      t.string :number, null: false
+      t.string :guest_number, null: false
       t.string :country, null: false
       t.string :state, null: false
       t.string :city, null: false

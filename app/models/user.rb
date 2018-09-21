@@ -3,15 +3,16 @@ class User < ApplicationRecord
 
   has_many :rooms
   has_many :reservations
+  has_many :listings
   # has_secure_password
 
-  before_save { |user| user.email = email.downcase }
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :full_name, length: {maximum: 50}, presence: true
-  validates :email, presence: true,
-  format: { with: VALID_EMAIL_REGEX },
-  uniqueness: { case_sensitive: false }
-  validates :password, presence: true, length: { minimum: 6 }
+  # before_save { |user| user.email = email.downcase }
+  # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  # validates :full_name, length: {maximum: 70}, presence: true
+  # validates :email, presence: true,
+  # format: { with: VALID_EMAIL_REGEX },
+  # uniqueness: { case_sensitive: false }
+  # validates :encrypted_password, presence: true, length: { minimum: 6 }
 
 
   has_many :authentications, dependent: :destroy
