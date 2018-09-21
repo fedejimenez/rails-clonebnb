@@ -1,15 +1,18 @@
 <div class="form-group">
 <%= form_for :session, url: session_path do |form| %>
   <div class="text-field">
-    <%= form.text_field :email, type: 'email', class: 'form-control-form', placeholder: 'Email'%>
+    	<%= form.text_field :email, type: 'email', class: 'form-control-form', placeholder: 'Email'%>
+    	<span class="fa fa-envelope" id="input-font-awesome"></span>
   </div>
 
   <div class="password-field">
-    <%= form.password_field :password, class: 'form-control-form', placeholder: 'Password' %>
+    <%= form.password_field :password, class: 'form-control-form input-font-awesome', placeholder: 'Password' %>
+    <span class="fa fa-lock" id="input-font-awesome"></span>
+
   </div>
 
   <div class="submit-field">
-    <%= form.submit :Login, class: 'btn-lgin', placeholder: 'Login'  %>
+    <%= form.submit :'Log in', class: 'btn-lgin', placeholder: 'Login'  %>
   </div>
 
   
