@@ -1,0 +1,10 @@
+<tr>
+    <td><%= h reservation.user_id %></td>
+    <td><%= h reservation.created_at %></td>
+    <td><%= l reservation.check_in, :format => :long %> - <%= l reservation.check_out, :format => :long %></td>
+    <td class="td-actions">
+        <% link_to(reservation_path(reservation), :class => "btn btn-small") do %>
+            <i class="btn-icon-only icon-info-sign"></i>                                       
+        <% end %>
+    </td>
+</tr>

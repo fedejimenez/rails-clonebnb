@@ -16,6 +16,12 @@
 </p>
 
 <p>
+  <%= image_tag @listing.snap.url %>
+  <%= image_tag @listing.snap.url(:medium) %>
+  <%= image_tag @listing.snap.url(:thumb) %>
+</p>
+
+<p>
   <strong>Room number:</strong>
   <%= @listing.room_number %>
 </p>
@@ -75,5 +81,19 @@
   <%= @listing.user_id %>
 </p>
 
-<%= link_to 'Edit', edit_listing_path(@listing) %> |
+<% if @listing.user_id == current_user.id %>
+  <%= link_to 'Edit', edit_listing_path(@listing) %>
+<% else %>
+  <%= link_to 'Reserve', reserve_listing_path(@listing) %>
+<% end %>
+
+<% if @listing.user_id == current_user.id %>
+  <h3>Reservations on this listing</h3>
+  <%= render "reservations_on_listing" %>
+<% else %>
+  <h3>Owner details</h3>
+  <% @user = User.find(@listing.user_id) %>
+  <%= render "users/user" %>
+<% end %>
+|
 <%= link_to 'Back', listings_path %>

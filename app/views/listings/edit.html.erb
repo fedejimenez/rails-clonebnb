@@ -1,6 +1,12 @@
 <h1>Editing Listing</h1>
 
-<%= render 'form', listing: @listing %>
+<% form_for @listing do |f| %>
+  <%= render :partial => "listing_form", :locals => {:f => f} %>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
 
 <%= link_to 'Show', @listing %> |
 <%= link_to 'Back', listings_path %>

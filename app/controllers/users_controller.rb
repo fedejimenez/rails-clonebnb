@@ -28,6 +28,11 @@ class UsersController < Clearance::UsersController
     end
   end
 
+  def listings
+    user_from_id
+    @listings = @user.listings
+  end
+
   private
 
   def avoid_sign_in
@@ -68,8 +73,14 @@ class UsersController < Clearance::UsersController
     params.require(:user).permit(:full_name, :email, :password)
   end
 
-  def show
+  def user_from_id
     @user = User.find(params[:id])
+  end
+
+  def show
+    user_from_current_user
+    @listings = @user.listings
+    @title = "Welcome #{@user.name}. This is your profile." 
   end
 
 end

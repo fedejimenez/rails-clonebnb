@@ -1,0 +1,9 @@
+<h1>Listings of <%= @user.name%></h1>
+<div class="row-fluid">
+  <ul class="thumbnails">
+      <%= render @listings%>
+  </ul>
+</div>
+
+
+<%= link_to 'New listing', new_listing_path %>

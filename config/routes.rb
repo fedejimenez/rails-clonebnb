@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :listings
   # constraints Clearance::Constraints::SignedIn.new { |user| user.admin? } do
   #   root to: "pages#index", as: :admin_root
   # end
@@ -27,21 +26,30 @@ Rails.application.routes.draw do
   get "/sign_out" => "sessions#destroy", as: nil
   get "/sign_up" => "users#new", as: nil
 
-  get '/:404' => "application#not_found"
+  # get '/:404' => "application#not_found"
 
   get '/auth/:provider/callback' => 'sessions#create_from_omniauth'
   # match "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
-
   
-  # resources :users, only: :show
+  resources :listings
+  resources :listings, :member => { :reserve => :get }
+  resources :reservations
+  
+  resources :users, only: :show
 
-  # resources :rooms
-  # resources :photos
+  resources :rooms
+  resources :photos
 
-  # resources :rooms do
-  #   resources :reservations, only: [:create]
-  # end
+  resources :rooms do
+    resources :reservations, only: [:create]
+  end
+
+  get '/register', :controller => 'users', :action => 'new'
+  get '/login', :controller => 'user_sessions', :action => 'new'
+  get '/logout', :controller => 'user_sessions', :action => 'destroy'
+  get '/users', :controller => 'users', :action => 'index'
+  get '/search', :controller => 'pages', :action => 'search'
 
   # get '/preload' => 'reservations#preload'
   # resources :users, controller: "users", only: [:create] do
@@ -53,12 +61,4 @@ Rails.application.routes.draw do
   
 end
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  # devise_for :users,
-  #            path: '',
-  #            path_names: {sign_in: 'login', sign_out: 'logout', edit: 'profile'},
-  #            controllers: {
-  #                omniauth_callbacks: 'omniauth_callbacks',
-  #                registrations: 'registrations'
-  #            }

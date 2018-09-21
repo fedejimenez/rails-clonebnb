@@ -1,12 +1,23 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
+  before_action :listing_from_id , :only => [:show, :edit, :update, :destroy, :reserve]
+  before_action :require_user, :only => [:index, :new]
   # GET /listings
   # GET /listings.json
-  def index
-    @listings = Listing.all
-  end
 
+  # def index
+  #   @listings = Listing.all
+  # end
+
+  def index
+    if current_user
+      @listings = Listing.not_belonging_to_current_user(current_user.id)
+    else
+      @listings = Listing.all
+    end
+  end
+  
   # GET /listings/1
   # GET /listings/1.json
   def show
