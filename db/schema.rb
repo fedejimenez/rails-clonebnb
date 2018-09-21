@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_20_040914) do
+ActiveRecord::Schema.define(version: 2018_09_21_074741) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,26 @@ ActiveRecord::Schema.define(version: 2018_09_20_040914) do
     t.index ["user_id"], name: "index_authentications_on_user_id"
   end
 
+  create_table "listings", force: :cascade do |t|
+    t.string "user_id", null: false
+    t.string "name", null: false
+    t.integer "place_type", null: false
+    t.string "property_type", null: false
+    t.integer "room_number", null: false
+    t.integer "bed_number", null: false
+    t.string "guest", null: false
+    t.string "number", null: false
+    t.string "country", null: false
+    t.string "state", null: false
+    t.string "city", null: false
+    t.string "zipcode", null: false
+    t.string "address", null: false
+    t.integer "price", null: false
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -33,6 +53,10 @@ ActiveRecord::Schema.define(version: 2018_09_20_040914) do
     t.string "confirmation_token", limit: 128
     t.string "remember_token", limit: 128, null: false
     t.string "full_name"
+    t.string "gender"
+    t.string "phone"
+    t.string "country"
+    t.date "birthdate"
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end

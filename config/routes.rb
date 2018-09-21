@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :listings
   # constraints Clearance::Constraints::SignedIn.new { |user| user.admin? } do
   #   root to: "pages#index", as: :admin_root
   # end
