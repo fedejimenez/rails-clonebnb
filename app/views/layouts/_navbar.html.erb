@@ -16,10 +16,23 @@
 							<div id="navbar" class="navbar-collapse collapse">
 								<form class="form-inline">
 									<a  href="#" class="btn-blu mrgn-top" data-toggle="modal" data-target="#at-helping">Help</a> 
+									  <form class="navbar-form" role="search" action = "<%= search_path %>" method = "get">
+						              <div class="input-group">
+						                  <input type="text" class="form-control" placeholder="Search Places" name="search[place]" id="srch-term">
+						              </div>
+						            </form>	
 									<ul class="nav navbar-nav navbar-right bdr">
-										<li><a href="#" data-toggle="modal" data-target="#at-login">Sign in</a>
+										<li>
+											<a href="#" data-toggle="modal" data-target="#at-login">Become a Host</a>
 										</li>
-										<li ><a href="#" data-toggle="modal" data-target="#at-signup">Sign Up</a>
+										<li>
+											<a href="#" data-toggle="modal" data-target="#at-login">Help</a>
+										</li>
+										<li>
+											<a href="#" data-toggle="modal" data-target="#at-login">Log in</a>
+										</li>
+										<li >
+											<a href="#" data-toggle="modal" data-target="#at-signup">Sign Up</a>
 										</li>
 									</ul>
 								</form>

@@ -12,8 +12,9 @@
     <div class="flash <%= key %>"><%= value %></div>
 <% end %>
 
+<%= link_to "Homes", listings_path %>
 
-Search Clonebnb
+
 
 <% form_tag search_path, :method => 'get' do %>
   <%= label :search, "Place" %><br />
@@ -71,7 +72,3 @@ Search Clonebnb
       </div><!-- /.container -->
     </div><!-- /.navabar-inner -->
   </div> <!-- /.navbar -->
-
-
-
-

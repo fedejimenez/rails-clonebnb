@@ -13,8 +13,8 @@
         <div class="span12">
           <b>
             <% if listing.availability_from != nil && listing.availability_to !=nil %>
-               <%=  l listing.availability_from, :format => :long %>
-               <%  l listing.availability_to, :format => :long %>
+               <%=l listing.availability_from, :format => :long %>
+               <% l listing.availability_to, :format => :long %>
             <% end%>
 
           </b><br/>
