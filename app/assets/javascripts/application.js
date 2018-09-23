@@ -18,3 +18,18 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+
+var autocomplete;
+
+function initAutocomplete() {
+	// Create the autocomplete object
+	autocomplete = new google.maps.places.Autocomplete(
+	    /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+	    {types: ['geocode']});
+	autocomplete.addListener('place_changed',  function() {
+	// var place = autocomplete.getPlace();
+	// console.log(place);
+  });
+}
+

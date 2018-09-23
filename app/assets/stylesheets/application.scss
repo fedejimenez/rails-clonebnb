@@ -11,28 +11,40 @@
  * It is generally better to create a new file per style scope.
  *
  */
-@import "bootstrap-sprockets";
+// @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
 @import "nav_bar.scss";
 @import "footer.scss";
+@import "footer.scss";
+@import "listings.scss";
+// @import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+// @import url('https://fonts.googleapis.com/css?family=Circular:400,700');
 
 
-body {
-    margin: auto;
-    background-color: #eaeaea;
+body, html {
+    font-family: 'Circular', sans-serif;
+    font-size: 14px;
+    // margin: auto;
+    color: #484848;
+    background-color: #ffffff;
+    line-height: 1.7;
 }
 
 .container {
   width: auto;
   margin: auto;
-  padding: 0;
+  // padding: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .row {
   clear:both;
-  display: table;
-  content: "";
+  margin: 0px;
 }
+
+
+
 
 

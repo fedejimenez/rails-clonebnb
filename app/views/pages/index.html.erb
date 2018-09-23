@@ -1,20 +1,22 @@
 <div class="page-header">
-	<h1>Welcome! 
+	<h1>Select your next destination! 
+
+    <!-- <input id="pac-input" class="controls" type="text" placeholder="Search for Something"> -->
+    <!-- <div id="map-canvas"></div> -->
+
 		<% if logged_in? %>
 			<span><%= current_user.full_name %></span>
 			<%= button_to ("Sign out"), sign_out_path, method: :delete, class: 'btn btn-primary' %>
 		<% end %>
-	</h1>
-</div>
+  	</h1>
+  </div>
 
 <div id="flash">
-  <% flash.each do |key, value| %>
-    <div class="flash <%= key %>"><%= value %></div>
+<% flash.each do |key, value| %>
+  <div class="flash <%= key %>"><%= value %></div>
 <% end %>
 
 <%= link_to "Homes", listings_path %>
-
-
 
 <% form_tag search_path, :method => 'get' do %>
   <%= label :search, "Place" %><br />
@@ -31,44 +33,3 @@
   <%= submit_tag "Search", :name=>nil, :class => "btn btn-success" %>
 <% end %>
 
-
-<div class="navbar navbar-inverse navbar-fixed-top">   
-    <div class="navbar-inner">
-      <div class="container">
-        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="brand" href=<%= root_path %>>Clonebnb</a>
-        <div class="nav-collapse collapse">
-          <div class="col-sm-3 col-md-3 pull-left">
-            <form class="navbar-form" role="search" action = "<%= search_path %>" method = "get">
-              <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Search Places" name="search[place]" id="srch-term">
-              </div>
-            </form>
-          </div>
-          <ul class="nav">
-            <li><%= link_to "Browse", listings_path %></li>
-            <% if current_user %>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.full_name %><b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "Your Listings", listings_path(current_user.id)%></li>
-                <li><%= link_to "Your Reservations", reservations_path %></li>
-                <li class="divider"></li>
-                <li><%= link_to "Account", users_path %></li>
-                <li><%= link_to "Logout", logout_path %></li>
-              </ul>
-            </li>
-            <% else %>
-            <li><%= link_to "Register", new_user_path %></li>
-            <li><%= link_to "Login", login_path %></li>
-            <% end %>
-            <li><%= link_to "List Your Space", new_listing_path %></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div><!-- /.container -->
-    </div><!-- /.navabar-inner -->
-  </div> <!-- /.navbar -->
