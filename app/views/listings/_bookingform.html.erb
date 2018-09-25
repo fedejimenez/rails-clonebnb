@@ -1,0 +1,44 @@
+<!--IMPLEMENT AJAX IN NEXT VERSION-->
+<div id="booking-form">
+  <p id="price-info"><span id="price">$<%=current_listing.price%></span> <span id="price-per">per night</span></p>
+  <p>
+    <span  class="rating">
+      <% if current_listing.rating != nil %>
+        <% current_listing.rating.times do %>
+          <i class="fas fa-star"></i>
+        <% end %>
+      <% else %>
+        No reviews yet, be the first to book.
+      <% end %>
+    </span>
+    <span id="review-count"><sub><%= current_listing.total_reviews.count %> Reviews</sub></span>
+  </p>
+  <br>
+  <hr class="hor-rule">
+  <br>
+
+  <%= form_tag dates_confirmation_path(current_listing.id), :method => :get do %> 
+    <div class="field">
+      <label>Check-in date:</label>
+      <div class="control">
+        <%= date_field_tag 'start_date', nil, :class => 'select booking-input' %>
+      </div>
+    </div>
+    
+    <div>
+      <label>Check-out date:</label>
+      <div class="control">
+       <%= date_field_tag 'end_date', nil, :class => 'select booking-input' %>
+      </div>
+    </div>
+    
+    <div id="booking-dates-error-notice"><%= flash[:booking_error] %></div>
+    
+    <br>
+    
+    <div class="control">
+      <%= submit_tag "Request to Book", :class => 'button', :id => 'booking-button' %>
+    </div>
+    <p class="form-footer">You won't be charged yet</p>
+  <% end %>
+</div>

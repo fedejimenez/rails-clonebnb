@@ -33,6 +33,10 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :de`velopment
 
+#  ##################################################
+# Non default gems added to the project
+#####################################################
+
 #Use Clearance Engine (Rails authentication with email & password)
 gem "clearance"
 
@@ -54,12 +58,33 @@ gem 'faker', :git => 'https://github.com/stympy/faker.git'
 # Use pagination
 gem 'kaminari'
 
+# Use acts as bookable
+# gem 'acts_as_bookable'
+
+gem "bulma-rails", "~> 0.6.2"
+
+# Postgresql version downgraded to be compatible with ActiveRecord
+# gem 'pg', '~>0.18.0'
+
+gem 'activerecord'
+gem 'heroku'
+gem 'braintree'
+gem 'sidekiq'
+gem 'rails_12factor'
+gem 'pg_search'
+gem 'carrierwave', '~> 1.0'
+gem 'fog-aws'
+
 # Use Omniauth 
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-linkedin'
+
+
+##################################################
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

@@ -4,6 +4,7 @@ class UsersController < Clearance::UsersController
     before_action :redirect_signed_in_users, only: [:create, :new]
     skip_before_action :require_login, only: [:create, :new], raise: false
     skip_before_action :authorize, only: [:create, :new], raise: false
+
   else
     before_filter :redirect_signed_in_users, only: [:create, :new]
     skip_before_filter :require_login, only: [:create, :new], raise: false

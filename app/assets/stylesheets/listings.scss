@@ -134,3 +134,35 @@
 }
 
 
+// ============================================================================
+//                BOOTSTRAP TABLE
+// ============================================================================= 
+#myInput {
+  width: 90%;
+  font-size: 14px;
+  padding: 15px;
+  border: 2px solid #ddd;
+  margin-bottom: 12px;
+  border-radius: 10px;
+}
+
+#myTable {
+  // border-collapse: collapse;
+  width: 90%;
+  border: 2px solid #ddd;
+  font-size: 14px;
+  padding: 15px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 2px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}

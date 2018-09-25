@@ -1,0 +1,6 @@
+<div id="booking-success">
+  <%= flash[:notice] %>! Click below to finalize your booking.
+  <%= form_tag :action => "book_finalization" do %>
+   <%=submit_tag("Book") %>
+  <% end %>
+</div>

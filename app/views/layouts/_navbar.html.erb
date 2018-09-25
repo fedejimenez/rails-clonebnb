@@ -1,47 +1,161 @@
-<nav class="navbar navbar-default navbar-static-top">
-	<div class="nav">
-	  <div class="nav-logo">
-	    <a href="/"><img src="https://s-media-cache-ak0.pinimg.com/originals/92/bf/b7/92bfb777f072d29e4c09b6feca4e487c.png" alt="home" />
-	    </a>
-	  </div>
-	  
-	  <div class="nav-links" id="locationField">
-      	<input class="" id="autocomplete" placeholder="Anywhere - Homes" type="text">
-	  </div>
-	  
-	  <div class="navbar navbar-header ">
-		  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-			<span class="sr-only">Toggle navigation</span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	      </button>
-	  </div>  
+<nav class="navbar navbar-default" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myCollapseBar">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+	<div class="nav-logo">
+	<a href="/"><img src="https://s-media-cache-ak0.pinimg.com/originals/92/bf/b7/92bfb777f072d29e4c09b6feca4e487c.png" alt="home" />
+	</a>
+	</div>
+  </div>
 
-	  <div id="myNavbar" class="nav-right collapse navbar-collapse">
-		<ul id="menu" class="nav navbar-nav navbar pull-right">
-		    <li class="messages">
-		      <a href="#" >Start Hosting</a>
-		      <div class="notification"></div>
-		    </li>
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="myCollapseBar">
+    <div class="col-sm-3 col-md-4" id="nav-search">
+        <form class="" role="search">
+	        <div class="nav-search">
+	      	<input class="" id="autocomplete" placeholder="Anywhere - Homes" type="text">
+	            <div class="input-group-btn" id="locationField">
+	            </div>
+	        </div>
+        </form>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+	    <li>
+	      <a href="#" >Start Hosting</a>
+	    </li>
+		<% if logged_in? %>
 			<li>
-				<a href="#" data-toggle="" data-target="">Help</a>
+				<a href="#" data-toggle="modal" data-target="#">Save</a>
 			</li>
+			<li >
+				<a href="#" class="dropdown-toggle" data-toggle="modal" data-target="#">Trip</a>
+			</li>
+			<li >
+				<a href="#" class="dropdown-toggle" data-toggle="modal" data-target="#">Messages</a>
+			</li>
+		<% end %>
+		<li>
+			<a href="#" data-toggle="" data-target="">Help</a>
+		</li>
+		<% if !logged_in? %>
 			<li>
 				<a href="#" data-toggle="modal" data-target="#at-signup">Sign Up</a>
 			</li>
 			<li >
-				<a href="#" data-toggle="modal" data-target="#at-login">Log in</a>
+				<a href="#" class="dropdown-toggle" data-toggle="modal" data-target="#at-login">Log in</a>
 			</li>
-			<li>
-				<a href="#" data-toggle="modal" class="btn-group dropdown avatar">
-					<img src="https://randomuser.me/api/portraits/men/69.jpg" alt=""/>
-				</a>
+		<% end %>
+
+		<% if logged_in? %>
+	  		<li class="dropdown nav-right">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				<!-- <img src="https://randomuser.me/api/portraits/men/69.jpg" alt=""/> -->
+				<!-- <img src="URI.parse(auth.info.image)" alt=""/> -->
+				<img src="<%= current_user.full_name %>" alt=""/>
+				<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+			          <li><a href="#">Profile</a></li>
+			          <li><a href="#">My Bookings </a></li>
+			          <li><a href="#">Privacy</a></li>
+			          <li class="divider"></li>
+			          <li>
+			          	<%= link_to ("Log Out"), sign_out_path, method: :delete %></a>
+			          </li>
+		        </ul>
 			</li>
-		</ul>
-	  </div>
-	</div>
-</nav>  
+		<% end %>
+    </ul>
+  </div>
+</nav><!-- /.navbar-default -->
+
+<!-- SECOND NAVBAR WITH FILTERS FOR SEARCH -->
+<div class="navbar" id="navbar-submenu" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+<!--   <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myCollapseBar2">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  </div>
+ -->
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="myCollapseBar2">
+    <ul class="nav navbar-nav navbar-left">
+	    <li class="dropdown">
+	      <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Dates 
+	      </button>
+		  <ul class="dropdown-menu">
+		      <li><a href="#">Profile</a></li>
+		      <li><a href="#">My Bookings </a></li>
+		      <li><a href="#">Privacy</a></li>
+		  </ul>
+		</li>
+	    <li class="dropdown">
+	      <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Guests 
+	      </button>
+		  <ul class="dropdown-menu">
+		      <li><a href="#">Profile</a></li>
+		      <li><a href="#">My Bookings </a></li>
+		      <li><a href="#">Privacy</a></li>
+		  </ul>
+		</li>
+	    <li class="dropdown">
+	      <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Home type 
+	      </button>
+		  <ul class="dropdown-menu">
+		      <li><a href="#">Profile</a></li>
+		      <li><a href="#">My Bookings </a></li>
+		      <li><a href="#">Privacy</a></li>
+		  </ul>
+		</li>
+
+	    <li class="dropdown">
+	      <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Price 
+	      </button>
+		  <ul class="dropdown-menu">
+		      <li><a href="#">Profile</a></li>
+		      <li><a href="#">My Bookings </a></li>
+		      <li><a href="#">Privacy</a></li>
+		  </ul>
+		</li>
+	    <li class="dropdown">
+	      <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Instant Book 
+	      </button>
+		  <ul class="dropdown-menu">
+		      <li><a href="#">Profile</a></li>
+		      <li><a href="#">My Bookings </a></li>
+		      <li><a href="#">Privacy</a></li>
+		  </ul>
+		</li>
+	    <li class="dropdown">
+	      <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Trip Type
+	      </button>
+		  <ul class="dropdown-menu">
+		      <li><a href="#">Profile</a></li>
+		      <li><a href="#">My Bookings </a></li>
+		      <li><a href="#">Privacy</a></li>
+		  </ul>
+		</li>
+	    <li class="dropdown">
+	      <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">More	filters
+	      </button>
+		  <ul class="dropdown-menu">
+		      <li><a href="#">Profile</a></li>
+		      <li><a href="#">My Bookings </a></li>
+		      <li><a href="#">Privacy</a></li>
+		  </ul>
+		</li>
+    </ul>
+  </div>
+</div>  <!-- /.navbar-collapse -->
 
 <div class="container">
     <div class="row">
@@ -235,8 +349,6 @@
 					</div>
 				</div> <!-- MODAL HELP ENDS -->
 			</section>
-	
-			
 		</div>
 	</div>
 </div>

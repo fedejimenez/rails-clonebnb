@@ -4,9 +4,14 @@
 
 <%= render @listings%>
 
+
+<div class="row">
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for word.." title="Type in a word" >
+</div>
+
 <%= paginate @listings %>
 
-<table>
+<table class="table table-list-search table-striped table-bordered" id="myTable">
   <thead>
     <tr>
       <th>Name</th>
@@ -23,7 +28,7 @@
       <th>Price</th>
       <th>Description</th>
       <th>User</th>
-      <th colspan="3"></th>
+      <th colspan="3">Action</th>
     </tr>
   </thead>
 
