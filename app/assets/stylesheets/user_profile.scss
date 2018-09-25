@@ -1,0 +1,53 @@
+.side-bar{
+    padding-top: 50px;
+    padding-left: 150px;
+}
+
+.btn-profile{
+    width: 225px;
+}
+
+.sidenav {
+    font-family: 'Circular';
+    width: 230px;
+    z-index: 1;
+    background-color: #ffffff;
+    overflow-x: hidden;
+    padding: 8px 0;
+}
+
+.sidenav-item {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #888;
+    display: block;
+}
+
+
+.sidenav-item:active {
+    color: #fff;
+}
+.sidenav-item:hover {
+    color: #ccc;
+}
+
+.panel{
+    border: 1px solid #ccc;
+    margin-top: 50px;
+    width: 80%;
+    font-family: 'Circular';
+    h2{
+        margin: 0;
+        font-size: 20px;
+        background-color: #eee;
+        padding: 10px;
+    }
+    input, textarea{
+        padding-left: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+}
+
+

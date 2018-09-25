@@ -4,10 +4,10 @@ class ListingsController < ApplicationController
 
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
-  before_action :listing_from_id , :only => [:show, :edit, :update, :destroy, :reserve]
-  before_action :require_user, :only => [:index, :new]
+  # before_action :listing_from_id , :only => [:show, :edit, :update, :destroy, :reserve]
+  before_action :require_user, :only => [:new, :update, :destroy]
 
-  before_action :authorize_user, :only => [:edit, :update, :destroy]
+  # before_action :authorize_user, :only => [:edit, :update, :destroy]
 
   # GET /listings
   # GET /listings.json
@@ -51,16 +51,34 @@ class ListingsController < ApplicationController
 
   # POST /listings
   # POST /listings.json
+  # def create
+  #   @listing = Listing.new(listing_params)
+  #   respond_to do |format|
+  #     if @listing.save
+  #       format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
+  #       format.json { render :show, status: :created, location: @listing }
+  #     else
+  #       format.html { render :new }
+  #       format.json { render json: @listing.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
+
   def create
     @listing = Listing.new(listing_params)
-    respond_to do |format|
-      if @listing.save
-        format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
-        format.json { render :show, status: :created, location: @listing }
-      else
-        format.html { render :new }
-        format.json { render json: @listing.errors, status: :unprocessable_entity }
+    @listing.schedule = IceCube::Schedule.new(Date.today, duration: 365.days)
+    @listing.user_id = current_user.id
+    @listing.property_id = 6
+ 
+    if @listing.save
+      params[:listing_images]['image'].each do |image|
+        @listing_image = @listing.listing_images.create!(:image => image)
       end
+      flash[:notice] = "Listing added"
+      redirect_to listing_path(@listing.id)
+    else
+      flash[:notice] = "Something went wrong- try again"
+      redirect_to listings_path
     end
   end
 
@@ -96,8 +114,9 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:name, :place_type, :property_type, :room_number, :bed_number, :guest, :number, :country, :state, :city, :zipcode, :address, :price, :description, :user_id)
+      params.require(:listing).permit(:name, :place_type, :property_type, :room_number, :bed_number, :guest_number, :country, :state, :city, :zipcode, :address, :price, :description, :user_id)
     end
+
 end
 
 

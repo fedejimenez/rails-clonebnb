@@ -1,99 +1,87 @@
-<p id="notice"><%= notice %></p>
+ <% listing_type = current_listing.property_type %>
+ 
+  <div id="gallery-container">
+    <i class="fas fa-plus" id="icon-add-photos"></i>
+    <div id="gallery">
 
-<p>
-  <strong>Name:</strong>
-  <%= @listing.name %>
-</p>
+    </div>
+  </div>
+  
+<div id="show-container" class="columns">
+  <div class="column is-three-fifths">
+    <div id="listing-show-page"> 
+      <p id="property-description">ENTIRE HOUSE</p>
+      <p class="title" id="property-title"><%= current_listing.name %></p>
+      <p><%= @listing.city %>, <%= @listing.state %>, <%= @listing.country %></p>
 
-<p>
-  <strong>Place type:</strong>
-  <%= @listing.place_type %>
-</p>
+      <p id="property-type"> <strong>Place type:</strong> <%= @listing.place_type %></p>
+      <p id="property-type"> <strong>Property type:</strong> <%= @listing.property_type %></p>
 
-<p>
-  <strong>Property type:</strong>
-  <%= @listing.property_type %>
-</p>
+      <% if signed_in? && (current_user.id == current_listing.user_id || current_user.superadmin?) %>
+        <p><%= link_to "Edit this listing", edit_listing_path(current_listing.id) %></p>
+      <% end %>
+      <div id="listing-icons">
+        <span><i class="fas fa-users"></i> <%=current_listing.guest_number%> guests</span>
+        <span><i class="fas fa-lightbulb"></i> <%=current_listing.room_number%> bedrooms</span>
+        <span><i class="fas fa-bed"></i> <%=current_listing.bed_number%> beds</span>
+        <span><i class="fas fa-shower"></i> <%=current_listing.bathrooms%> bathrooms</span>
+      </div>
+      
+      <div>
+        <%= current_listing.description %>
+      </div>
+      
+      <br>
+      
+      <hr>
+      
+      <div>
+        <div id="review-header">
+          <strong><%= current_listing.total_reviews.count %> Reviews </strong>
+          <span class="rating">
+            <% if current_listing.rating != nil  %>
+              <% current_listing.rating.times do %>
+                <i class="fas fa-star"></i>
+              <% end %>
+            <% else %>
+                No reviews yet, be the first to review.
+            <% end %>
+          </span>
+        </div>
+        <% current_listing.total_reviews.each do |review| %>
+        <div class="card-content">
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-48x48">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Default_profile_picture_%28male%29_on_Facebook.jpg">
+              </figure>
+            </div>
+            
+            <div class="media-content">
+              <p class="review-name"><%= review.user.first_name %></p>
+              <p class="review-date">February 2018</p>
+            </div>    
+          </div>
+          
+          <br>
+          
+          <div class="content">
+            <%= review.text %>
+          </div>
+          
+        </div>
+        <hr class="hor-rule">
+        <% end %>
+      </div>
+      
+    </div>
+  </div>
+  <% if @listing.user_id == current_user %>
+    <%= link_to 'Edit', edit_listing_path(@listing) %>
+  <% end %>
+  <div class="column">
+    <%= render "listings/bookingform" %>
+    <%= link_to 'Back', listings_path %>
+  </div>
 
-<p>
-  <%= image_tag @listing.snap.url %>
-  <%= image_tag @listing.snap.url(:medium) %>
-  <%= image_tag @listing.snap.url(:thumb) %>
-</p>
-
-<p>
-  <strong>Room number:</strong>
-  <%= @listing.room_number %>
-</p>
-
-<p>
-  <strong>Bed number:</strong>
-  <%= @listing.bed_number %>
-</p>
-
-<p>
-  <strong>Guest:</strong>
-  <%= @listing.guest %>
-</p>
-
-<p>
-  <strong>Number:</strong>
-  <%= @listing.number %>
-</p>
-
-<p>
-  <strong>Country:</strong>
-  <%= @listing.country %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @listing.state %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @listing.city %>
-</p>
-
-<p>
-  <strong>Zipcode:</strong>
-  <%= @listing.zipcode %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @listing.address %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @listing.price %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @listing.description %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @listing.user_id %>
-</p>
-
-<% if @listing.user_id == current_user.id %>
-  <%= link_to 'Edit', edit_listing_path(@listing) %>
-<% else %>
-  <%= link_to 'Reserve', reserve_listing_path(@listing) %>
-<% end %>
-
-<% if @listing.user_id == current_user.id %>
-  <h3>Reservations on this listing</h3>
-  <%= render "reservations_on_listing" %>
-<% else %>
-  <h3>Owner details</h3>
-  <% @user = User.find(@listing.user_id) %>
-  <%= render "users/user" %>
-<% end %>
-|
-<%= link_to 'Back', listings_path %>
+</div>

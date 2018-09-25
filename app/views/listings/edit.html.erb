@@ -1,12 +1,8 @@
-<h1>Editing Listing</h1>
-
-<% form_for @listing do |f| %>
-  <%= render :partial => "listing_form", :locals => {:f => f} %>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
-
-
-<%= link_to 'Show', @listing %> |
-<%= link_to 'Back', listings_path %>
+<div class="buffer">
+  <h3>Edit listing</h3>
+  
+  <%= form_for @listing, url: {action: "update"} do |f| %>
+    <%= render '/listings/form', f: f %>
+  <% end %>
+  
+</div>

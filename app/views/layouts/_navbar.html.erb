@@ -59,13 +59,16 @@
 				<img src="<%= current_user.full_name %>" alt=""/>
 				<b class="caret"></b></a>
 				<ul class="dropdown-menu">
-			          <li><a href="#">Profile</a></li>
-			          <li><a href="#">My Bookings </a></li>
-			          <li><a href="#">Privacy</a></li>
-			          <li class="divider"></li>
-			          <li>
-			          	<%= link_to ("Log Out"), sign_out_path, method: :delete %></a>
-			          </li>
+		          <li><%= link_to "Edit Profile", "/users/show" %></li> 
+		          <li><a href="#">Invite friends </a></li>
+		          <li><a href="#">Refer Hosts </a></li>
+		          <li><a href="#">Account Settings</a></li>
+		          <li><a href="#">My Guidebook</a></li>
+		          <li><a href="#">Clonebnb for work</a></li>
+		          <li class="divider"></li>
+		          <li>
+		          	<%= link_to ("Log Out"), sign_out_path, method: :delete %></a>
+		          </li>
 		        </ul>
 			</li>
 		<% end %>
