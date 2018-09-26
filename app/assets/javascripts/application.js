@@ -67,3 +67,7 @@ function myFunction() {
     });
 }
 
+// Infinite scrolling
+$("#myTable").append("<tbody class='page'><%= escape_javascript(render(@listings)) %></tbody>");
+
+

@@ -1,16 +1,16 @@
+
 <p id="notice"><%= notice %></p>
 
-<h1>Listings</h1>
-<div class="column is-two-thirds">
-  <div id="listings-container">
-    <%= paginate @listings%>
+<!-- <h1>Listings</h1> -->
+<!-- <div class="column is-two-thirds"> -->
+  <!-- <div id="listings-container"> -->
     <% @listings.each do |listing| %>
       <%= render "/listings/detail", listing: listing %>
+      <%= paginate @listings %>
     <% end %>
-    <%= paginate @listings %>
 
-  </div>
-</div>
+  <!-- </div> -->
+<!-- </div> -->
 
 
 <div class="row">
@@ -64,9 +64,13 @@
     <% end %>
   </tbody>
 </table>
+
+<%= link_to 'More Listings', listings_path %>
 <%= paginate @listings %>
 
 
 <br>
 
 <%= link_to 'New Listing', new_listing_path %>
+
+

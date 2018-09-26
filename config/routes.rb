@@ -49,6 +49,8 @@ Rails.application.routes.draw do
   get '/login', :controller => 'user_sessions', :action => 'new'
   get '/logout', :controller => 'user_sessions', :action => 'destroy'
   get '/users', :controller => 'users', :action => 'index'
+  post '/users/:id' => 'users#edit'
+
   get '/search', :controller => 'pages', :action => 'search'
 
   post '/search' => 'search#search'
@@ -60,7 +62,8 @@ Rails.application.routes.draw do
   get '/bookings/:id/book_check' => 'bookings#book_check', as: :book_check
   get '/bookings/:id/book_confirmation' => 'bookings#book_confirmation', as: :book_confirmation
   post '/bookings/:id/book_finalization' => 'bookings#book_finalization', as: :book_finalization
-  
+  post '/listings/:id' => 'listings#edit'
+
   concern :paginatable do
     get '(page/:page)', action: :index, on: :collection, as: 'page'
   end

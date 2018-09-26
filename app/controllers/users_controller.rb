@@ -34,6 +34,28 @@ class UsersController < Clearance::UsersController
     @listings = @user.listings
   end
 
+  def edit
+    @user = User.find_by id: params[:id]
+    # respond_to do |format|
+    #   if @user.update(user_params)
+    #     format.html { redirect_to @user, notice: 'Profile was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @user }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @user.errors, status: :unprocessable_entity }
+    #   end
+    # end
+  end
+
+  def update
+    @user = User.find_by id: params[:id]
+    if @user.update(user_params)
+      redirect_to edit_user_path
+    else
+      render '/users/edit'
+    end
+  end
+
   private
 
   def avoid_sign_in
@@ -71,7 +93,7 @@ class UsersController < Clearance::UsersController
     # params[Clearance.configuration.user_parameter] || Hash.new
     # params[:user].permit(:email, :password, :full_name)
     # params.require(:user).permit(:full_name, :email, :encrypted_password, :password, :confirmation_token, :remember_token)
-    params.require(:user).permit(:full_name, :email, :password)
+    params.require(:user).permit(:birthdate, :phone, :firstname, :lastname, :gender, :full_name, :email, :password)
   end
 
   def user_from_id

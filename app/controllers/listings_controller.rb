@@ -47,7 +47,7 @@ class ListingsController < ApplicationController
     else
       # search_map(@renters)
     end
-    @listings = Listing.order(:name).page(params[:page]).per(6)
+    @listings = Listing.order(:name).page(params[:page]).per(8)
 
   end
   
@@ -151,7 +151,7 @@ class ListingsController < ApplicationController
     end
 
     def filtering_params(params)
-      params.slice(:name, :city, :price, :guest_number, :room_number, :bathrooms)
+      params.slice(:property_type, :name, :city, :price, :guest_number, :room_number, :bathrooms)
     end
 end
 

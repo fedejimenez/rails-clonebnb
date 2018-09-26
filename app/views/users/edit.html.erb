@@ -32,39 +32,39 @@
             </ul>
           </div>
           <%= link_to 'View Profile', user_path(current_user), class: "btn btn-default btn-profile" %>
-
         </div>
+
         <div class="col-md-9">
           <div id="dashboard-content">
             <!-- <form accept-charset="UTF-8" action="/update/175283939" data-hook="update-profile-form" enctype="multipart/form-data" id="update_form" method="post"> -->
-            <% form_for current_user, url: {action: "update"} do |f| %>
-
+            <%= form_for(@user) do |f| %>
               <div class="panel space-4">
                 <div class="panel-header">
                   <h2 class="edit-profile-section-heading">Required</h2>
                 </div>
                 <div class="panel-body">
-                  <input type="hidden" name="password" id="user_email_password" value=""/>
-                  <div class="row row-condensed space-4">
-                    <label class="text-right col-sm-3" for="user_first_name">First Name</label>
-                    <div class="col-sm-9">
-                      <input id="user_first_name" name="user[name]" size="30" type="text" value="<%= current_user.full_name.split.first%>"/>
-                    </div>
-                  </div>
-                  <div class="row row-condensed space-4">
-                    <label class="text-right col-sm-3" for="user_last_name">Last Name</label>
-                    <div class="col-sm-9">
-                      <input id="user_last_name" name="user[last_name]" size="30" type="text" value="<%=current_user.full_name.split.last %>"/>
+                  <%= content_tag :div, class: 'row row-condensed space-4' do %>
+                    <%= f.label :user_first_name,  class: 'text-right col-sm-3' do %>
+                      First Name
+                    <% end %>
+                    <%= content_tag :div, class: 'col-sm-9' do %>
+                      <p><%= f.text_field :firstname  %></p>
+                    <% end %>
+                  <% end %>
+                  <%= content_tag :div, class: 'row row-condensed space-4' do %>
+                    <%= f.label :user_last_name,  class: 'text-right col-sm-3' do %>
+                      Last Name
+                    <% end %>
+                    <%= content_tag :div, class: 'col-sm-9' do %>
+                      <p><%= f.text_field :lastname  %></p>
                       <div class="text-muted space-top-1">Your public profile only shows your first name. When you request a booking, your host will see your first and last name.
-                      </div>
+                    <% end %>
                     </div>
-                  </div>
+                  <% end %>
                   <div class="row row-condensed space-4">
                     <label class="text-right col-sm-3" for="user_sex"> I am</label>
                     <div class="col-sm-9">
-                      <div class="select">
-						<%= select_tag(:gender, options_for_select([['Male', 'Male'], ['Female', 'Female'], ['Other', 'Other']], selected: current_user.gender )) %>
-                      </div>  
+                      <%= f.select(:gender, options_for_select([['Female', 'Female'], ['Male', 'Male'], ['Other', 'Other']], @user.gender )) %>
                       <div class="text-muted space-top-1">We use this data for analysis and never share it with other users.
                       </div>
                     </div>
@@ -239,36 +239,30 @@
                       </div>
                     </div>
                   </div>
-                  <div class="row row-condensed space-4">
-                    <label class="text-right col-sm-3" for="user_email">
-                    	Email
-                    </label>
-                    <div class="col-sm-9">
-                      <input id="user_email" name="user[email]" size="30" type="text" value="<%= current_user.email%>"/>
-                      <div class="text-muted space-top-1">
-                      We won’t share your private email address with other Airbnb users.
-                        <a href="/help/article/694" target="blank">Learn more</a>.
-                      </div>                  
-                    </div>
-                  </div>
-                  <div class="row row-condensed space-4">
-                    <label class="text-right col-sm-3" for="user_phone">
-                      Phone Number
-                    </label>
-                    <div class="col-sm-9">
-                      <input id="user_phone" name="user[phone]" size="30" type="text" value="<%= current_user.phone%>"/>
-                      <div class="clearfix" id="phone-number">
-                        <div class="phone-numbers-container has-phone-numbers">
-                          <div class="phone-numbers-hide-during-verify"></div>
-                          <div class="phone-number-verify-widget"></div>
-                          <div class="phone-number-verify-widget"></div>
-                          <div class="phone-number-replace-widget"></div>
-                        </div>
-                      </div>
 
+                  <%= content_tag :div, class: 'row row-condensed space-4' do %>
+                    <%= f.label :user_email,  class: 'text-right col-sm-3' do %>
+                      Email
+                    <% end %>
+                    <%= content_tag :div, class: 'col-sm-9' do %>
+                      <p><%= f.text_field :email  %></p>
+                      <div class="text-muted space-top-1">
+                         We won’t share your private email address with other Airbnb users.
+                      <a href="/help/article/694" target="blank">Learn more</a>.
+                      </div>    
+                    <% end %>
+                  <% end %>
+
+                  <%= content_tag :div, class: 'row row-condensed space-4' do %>
+                    <%= f.label :user_phone,  class: 'text-right col-sm-3' do %>
+                      Phone Number
+                    <% end %>
+                    <%= content_tag :div, class: 'col-sm-9' do %>
+                      <p><%= f.text_field :phone  %></p>
                       <div class="text-muted space-top-1">This is only shared once you have a confirmed booking with another Airbnb user. This is how we can all get in touch.</div>
-                    </div>                  
-	              </div>
+                    <% end %>
+                  <% end %>
+
                   <div class="row row-condensed space-4">
                     <label class="text-right col-sm-3" for="user_profile_info_preferred_language">Preferred Language</label>
                     <div class="col-sm-9">
@@ -653,13 +647,15 @@
                   </div>
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary btn-large">Save</button>
+              <!-- <button type="submit" class="btn btn-primary btn-large">Save</button> -->
             <!-- </form> -->
 	            <div class="submit-field">
 
-				    <%= f.submit :'update', class: 'btn btn-primary btn-large', placeholder: 'Save'  %>
-				</div>
-			<% end %>
+				        <%= f.submit 'Save', class: 'btn btn-primary btn-large' %>
+				      </div>
+
+			       <% end %>
+
             <div class="modal reauth-modal" role="dialog" aria-hidden="true" style="">
           </div>
         </div>

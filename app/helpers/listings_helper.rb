@@ -8,4 +8,8 @@ module ListingsHelper
 	def get_place_types
 		return ["entire home", "private room", "shared room"]		
 	end
+
+	def current_listing
+	    Listing.find(params[:id])
+  	end
 end

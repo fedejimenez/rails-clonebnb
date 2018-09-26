@@ -18,6 +18,7 @@
 @import "footer.scss";
 @import "footer.scss";
 @import "listings.scss";
+@import "listing_images.scss";
 @import "user_profile.scss";
 // @import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 // @import url('https://fonts.googleapis.com/css?family=Circular:400,700');
@@ -30,6 +31,7 @@ body, html {
     color: #484848;
     background-color: #ffffff;
     line-height: 1.7;
+    padding-top: 80px;
 }
 
 .container {

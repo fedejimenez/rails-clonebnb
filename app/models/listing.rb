@@ -172,8 +172,7 @@ class Listing < ActiveRecord::Base
       end
     end
     
-    def property_type
-      
+    def property_type      
       # property = Hash.new
       
       # subtype_id = Property.find(self.property_id).place_type_id
