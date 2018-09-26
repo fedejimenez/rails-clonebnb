@@ -5,7 +5,8 @@ class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
   # before_action :listing_from_id , :only => [:show, :edit, :update, :destroy, :reserve]
-  before_action :require_user, :only => [:new, :update, :destroy]
+  # before_action :require_user, :only => [:new, :update, :destroy]
+  before_action :require_permission, only: [:edit, :create]
 
   # before_action :authorize_user, :only => [:edit, :update, :destroy]
 
@@ -26,18 +27,34 @@ class ListingsController < ApplicationController
     end  
   end
 
-  def index
-    if current_user
-      @listings = Listing.not_belonging_to_current_user(current_user.id)
-    else
+  # def index
+    # if current_user
+      # @listings = Listing.not_belonging_to_current_user(current_user.id)
+    # else
       # @listings = Listing.all
-      @listings = Listing.order(:name).page(params[:page]).per(10)
+      # @listings = Listing.order(:name).page(params[:page]).per(10)
+    # end
+  # end
+
+  def index
+    @listings = Listing.where(nil)
+    filtering_params(params).each do |k, v|
+      @listings = @listings.public_send(k, v) if v.present?
     end
+    if @listings.empty?
+      @listings = Listing.all
+      # search_map(@renters)
+    else
+      # search_map(@renters)
+    end
+    @listings = Listing.order(:name).page(params[:page]).per(6)
+
   end
   
   # GET /listings/1
   # GET /listings/1.json
   def show
+    @listing_images = @listing.listing_images.all
   end
 
   # GET /listings/new
@@ -117,6 +134,25 @@ class ListingsController < ApplicationController
       params.require(:listing).permit(:name, :place_type, :property_type, :room_number, :bed_number, :guest_number, :country, :state, :city, :zipcode, :address, :price, :description, :user_id)
     end
 
+    def require_permission
+      if !signed_in?
+        flash[:notice] = "Oops, is this where you meant to go?"
+        if params[:id]
+          redirect_to listing_path
+        else
+          redirect_to listings_path
+        end
+      elsif params[:id]
+        if current_user != current_listing.user
+          flash[:notice] = "Oops, is this where you meant to go?"
+          redirect_to listing_path
+        end
+      end
+    end
+
+    def filtering_params(params)
+      params.slice(:name, :city, :price, :guest_number, :room_number, :bathrooms)
+    end
 end
 
 

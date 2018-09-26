@@ -54,9 +54,13 @@
 		<% if logged_in? %>
 	  		<li class="dropdown nav-right">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-				<!-- <img src="https://randomuser.me/api/portraits/men/69.jpg" alt=""/> -->
-				<!-- <img src="URI.parse(auth.info.image)" alt=""/> -->
-				<img src="<%= current_user.full_name %>" alt=""/>
+				<% if current_user.avatar !=nil %>
+				<%= image_tag("current_user.avatar", :alt => "avatar") %>
+				<% else %>	
+					<!-- <img src="https://randomuser.me/api/portraits/men/69.jpg" alt=""/> -->
+					<%= image_tag("avatar.svg", :alt => "avatar") %>
+
+				<% end %>	
 				<b class="caret"></b></a>
 				<ul class="dropdown-menu">
 		          <li><%= link_to "Edit Profile", "/users/show" %></li> 
@@ -75,90 +79,6 @@
     </ul>
   </div>
 </nav><!-- /.navbar-default -->
-
-<!-- SECOND NAVBAR WITH FILTERS FOR SEARCH -->
-<div class="navbar" id="navbar-submenu" role="navigation">
-  <!-- Brand and toggle get grouped for better mobile display -->
-<!--   <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myCollapseBar2">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-  </div>
- -->
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="myCollapseBar2">
-    <ul class="nav navbar-nav navbar-left">
-	    <li class="dropdown">
-	      <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Dates 
-	      </button>
-		  <ul class="dropdown-menu">
-		      <li><a href="#">Profile</a></li>
-		      <li><a href="#">My Bookings </a></li>
-		      <li><a href="#">Privacy</a></li>
-		  </ul>
-		</li>
-	    <li class="dropdown">
-	      <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Guests 
-	      </button>
-		  <ul class="dropdown-menu">
-		      <li><a href="#">Profile</a></li>
-		      <li><a href="#">My Bookings </a></li>
-		      <li><a href="#">Privacy</a></li>
-		  </ul>
-		</li>
-	    <li class="dropdown">
-	      <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Home type 
-	      </button>
-		  <ul class="dropdown-menu">
-		      <li><a href="#">Profile</a></li>
-		      <li><a href="#">My Bookings </a></li>
-		      <li><a href="#">Privacy</a></li>
-		  </ul>
-		</li>
-
-	    <li class="dropdown">
-	      <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Price 
-	      </button>
-		  <ul class="dropdown-menu">
-		      <li><a href="#">Profile</a></li>
-		      <li><a href="#">My Bookings </a></li>
-		      <li><a href="#">Privacy</a></li>
-		  </ul>
-		</li>
-	    <li class="dropdown">
-	      <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Instant Book 
-	      </button>
-		  <ul class="dropdown-menu">
-		      <li><a href="#">Profile</a></li>
-		      <li><a href="#">My Bookings </a></li>
-		      <li><a href="#">Privacy</a></li>
-		  </ul>
-		</li>
-	    <li class="dropdown">
-	      <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Trip Type
-	      </button>
-		  <ul class="dropdown-menu">
-		      <li><a href="#">Profile</a></li>
-		      <li><a href="#">My Bookings </a></li>
-		      <li><a href="#">Privacy</a></li>
-		  </ul>
-		</li>
-	    <li class="dropdown">
-	      <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">More	filters
-	      </button>
-		  <ul class="dropdown-menu">
-		      <li><a href="#">Profile</a></li>
-		      <li><a href="#">My Bookings </a></li>
-		      <li><a href="#">Privacy</a></li>
-		  </ul>
-		</li>
-    </ul>
-  </div>
-</div>  <!-- /.navbar-collapse -->
 
 <div class="container">
     <div class="row">

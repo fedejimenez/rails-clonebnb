@@ -4,19 +4,35 @@
         <% if listing.photos.present? %>
           <%= image_tag(listing.photos[0].url) %>
         <% else %>
-          <%= image_tag('https://images.unsplash.com/photo-1492889971304-ac16ab4a4a5a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=058c56771e5c8d1f9adf38dc794f6e0e&auto=format&fit=crop&w=2553&q=80')%>
+          <%= image_tag('https://images.unsplash.com/photo-1492889971304-ac16ab4a4a5a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=058c56771e5c8d1f9adf38dc794f6e0e&auto=format&fit=crop&w=2553&q=80', width: "200px")%>
           <% end %>
       </div>
       
       <div class="listing-text-content">
-        <p class="listing-additional-info"><%= listing_type[:subtype]%></p>
-        <p class="listing-title"><%= listing.title %></p>
+        <p class="listing-title"><%= listing.name %></p>
         <% if url_for(:only_path => true) == "/listings" %>
          <%= link_to "View more", listing_path(listing.id) %>
         <% end %>
-        
         <% if signed_in? && (current_user.id == listing.user_id || current_user.superadmin?) %>
           <p><%= link_to "Edit this listing", edit_listing_path(listing.id) %></p>
         <% end %>
       </div>
     </div>
+
+<div class="container">
+  <h1 align="center">Listing products</h1>
+
+    <% @products.each_slice(3) do |products| %>
+          <div class="row">
+            <% products.each do |product| %>
+                <div class="col-lg-4">
+                  <%= image_tag(product.image_url, class: 'list_image', size: '260x320') %>
+                  <%= product.title %> <br/>
+                  <%= product.price %> <br/>
+                  <%= link_to 'Show', product %><br/>
+                </div>
+            <% end %>    
+          </div>
+          <hr/>
+  <% end %>
+</div>

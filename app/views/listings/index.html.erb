@@ -1,8 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listings</h1>
+<div class="column is-two-thirds">
+  <div id="listings-container">
+    <%= paginate @listings%>
+    <% @listings.each do |listing| %>
+      <%= render "/listings/detail", listing: listing %>
+    <% end %>
+    <%= paginate @listings %>
 
-<%= render @listings%>
+  </div>
+</div>
 
 
 <div class="row">

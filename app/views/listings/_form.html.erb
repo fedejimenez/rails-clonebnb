@@ -94,31 +94,31 @@
 
 <%= form_for(@listing, url: {action: "create"}, html: { :multipart => true }) do |f| %>
 
-<div id = "new-listing-1">
-  <p>Title: <%= f.text_field :name  %></p>
-  <p>Description: <%= f.text_area :description %></p>
-</div>    
-<div id = "new-listing-2">
-  <p>City: <%= f.text_field :city %></p>
-  <p>Country: <%= f.text_field :country %></p>
-</div>
-<div id = "new-listing-3">
-  <p>Price: <%= f.text_field :price %></p>
-</div>
-<div id = "new-listing-4">
-</div>
-<div id ="new-listing-5">
-  <p>Guests: <%= f.text_field :guest_number %></p>
-  <p>Beds: <%= f.text_field :bed_number %></p>
-  <p>Bedrooms: <%= f.text_field :room_number %></p>
-  <p>Bathrooms: <%= f.text_field :bathrooms %></p>
-</div>
-<div>
-  <%= f.fields_for :listing_images do |i| %>
-    <%= i.label :images %><br>
-    <%= i.file_field :photo, :multiple => true, name: "listing_images[image][]" %>
-  <% end %>
-</div>
+  <div id = "new-listing-1">
+    <p>Title: <%= f.text_field :name  %></p>
+    <p>Description: <%= f.text_area :description %></p>
+  </div>    
+  <div id = "new-listing-2">
+    <p>City: <%= f.text_field :city %></p>
+    <p>Country: <%= f.text_field :country %></p>
+  </div>
+  <div id = "new-listing-3">
+    <p>Price: <%= f.text_field :price %></p>
+  </div>
+  <div id = "new-listing-4">
+  </div>
+  <div id ="new-listing-5">
+    <p>Guests: <%= f.text_field :guest_number %></p>
+    <p>Beds: <%= f.text_field :bed_number %></p>
+    <p>Bedrooms: <%= f.text_field :room_number %></p>
+    <p>Bathrooms: <%= f.text_field :bathrooms %></p>
+  </div>
+  <div>
+    <%= f.fields_for :listing_images do |i| %>
+      <%= i.label :images %><br>
+      <%= i.file_field :photo, :multiple => true, name: "listing_images[image][]" %>
+    <% end %>
+  </div>
 
   <p><%= f.submit "Submit"%></p>  
-  <% end %>
+<% end %>
