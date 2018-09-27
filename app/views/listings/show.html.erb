@@ -1,0 +1,87 @@
+ <% listing_type = current_listing.property_type %>
+ 
+  <div id="gallery-container">
+    <i class="fas fa-plus" id="icon-add-photos"></i>
+    <div id="gallery">
+
+    </div>
+  </div>
+  
+<div id="show-container" class="columns">
+  <div class="column is-three-fifths">
+    <div id="listing-show-page"> 
+      <p id="property-description">ENTIRE HOUSE</p>
+      <p class="title" id="property-title"><%= current_listing.name %></p>
+      <p><%= @listing.city %>, <%= @listing.state %>, <%= @listing.country %></p>
+
+      <p id="property-type"> <strong>Place type:</strong> <%= @listing.place_type %></p>
+      <p id="property-type"> <strong>Property type:</strong> <%= @listing.property_type %></p>
+
+      <% if signed_in? && (current_user.id == current_listing.user_id || current_user.superadmin?) %>
+        <p><%= link_to "Edit this listing", edit_listing_path(current_listing.id) %></p>
+      <% end %>
+      <div id="listing-icons">
+        <span><i class="fas fa-users"></i> <%=current_listing.guest_number%> guests</span>
+        <span><i class="fas fa-lightbulb"></i> <%=current_listing.room_number%> bedrooms</span>
+        <span><i class="fas fa-bed"></i> <%=current_listing.bed_number%> beds</span>
+        <span><i class="fas fa-shower"></i> <%=current_listing.bathrooms%> bathrooms</span>
+      </div>
+      
+      <div>
+        <%= current_listing.description %>
+      </div>
+      
+      <br>
+      
+      <hr>
+      
+      <div>
+        <div id="review-header">
+          <strong><%= current_listing.total_reviews.count %> Reviews </strong>
+          <span class="rating">
+            <% if current_listing.rating != nil  %>
+              <% current_listing.rating.times do %>
+                <i class="fas fa-star"></i>
+              <% end %>
+            <% else %>
+                No reviews yet, be the first to review.
+            <% end %>
+          </span>
+        </div>
+        <% current_listing.total_reviews.each do |review| %>
+        <div class="card-content">
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-48x48">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Default_profile_picture_%28male%29_on_Facebook.jpg">
+              </figure>
+            </div>
+            
+            <div class="media-content">
+              <p class="review-name"><%= review.user.first_name %></p>
+              <p class="review-date">February 2018</p>
+            </div>    
+          </div>
+          
+          <br>
+          
+          <div class="content">
+            <%= review.text %>
+          </div>
+          
+        </div>
+        <hr class="hor-rule">
+        <% end %>
+      </div>
+      
+    </div>
+  </div>
+  <% if @listing.user_id == current_user %>
+    <%= link_to 'Edit', edit_listing_path(@listing) %>
+  <% end %>
+  <div class="column">
+    <%= render "listings/bookingform" %>
+    <%= link_to 'Back', listings_path %>
+  </div>
+
+</div>

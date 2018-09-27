@@ -1,0 +1,8 @@
+<div class="buffer">
+  <h3>Edit listing</h3>
+  
+  <%= form_for @listing, url: {action: "update"} do |f| %>
+    <%= render '/listings/form', f: f %>
+  <% end %>
+  
+</div>

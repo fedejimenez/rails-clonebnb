@@ -1,0 +1,216 @@
+<li class="span3">
+  <div class="thumbnail" style="padding: 0">
+    <div style="padding:4px">
+
+    </div>
+    <div class="caption">
+      <h2><%= link_to(listing.name, listing_path(listing)) %></h2>
+      <p><%=h listing.address %></p>
+      <p><i class="icon icon-map-marker"></i> <%=h listing.name %></p>
+    </div>
+    <div class="modal-footer" style="text-align: left">
+      <div class="row-fluid">
+        <div class="span12">
+          <b>
+            <% if listing.availability_from != nil && listing.availability_to !=nil %>
+               <%=l listing.availability_from, :format => :long %>
+               <% l listing.availability_to, :format => :long %>
+            <% end%>
+
+          </b><br/>
+          <small>Availability</small>
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div class="span4"><b><%= listing.price %></b><br/><small>Price</small></div>
+        <div class="span4"><b><%= listing.property_type %></b><br/><small>Property Type</small></div>
+        <div class="span4"><b><%= listing.place_type %></b><br/><small>Place Type</small></div>
+      </div>
+      <div>
+        <% if current_user %>
+          <% if current_user_is_listing_owner? listing %>
+            <%= link_to 'Edit', edit_listing_path(listing) %> |
+            <%= link_to 'Destroy', listing, :confirm => 'Are you sure deleting this listing?', :method => :delete %>
+          <% else %>
+            <%= link_to 'Reserve', reserve_listing_path(listing) %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</li>
+
+<div class="card-deck">
+  <div class="card">
+    <h2 class="card-title">Homes around the world</h2>
+    <img class="card-img-top" src="https://a0.muscache.com/im/pictures/54335902/8572cc9d_original.jpg" class="w-100 mb-2" alt="">
+    <div class="card-body">
+      <span class="color-text"><b><%= listing.property_type %></b><br/> | <small><%= listing.state %></small></span>
+      <span class="place-name"><%= link_to(listing.name, listing_path(listing)) %></span>
+      <span class="price"><%= listing.price %> Free Cancelation</span>
+      <span class="rating">
+        <i class="fa fa-star checked"></i>
+        <i class="fa fa-star checked"></i>
+        <i class="fa fa-star checked"></i>
+        <i class="fa fa-star checked"></i>
+        <i class="fa fa-star checked"></i>
+        163.superhost
+      </span>
+    </div>
+    <div class="card-footer" style="text-align: left">
+      <div class="row-fluid">
+        <div class="span12">
+          <b>
+            <% if listing.availability_from != nil && listing.availability_to !=nil %>
+               <%=l listing.availability_from, :format => :long %>
+               <% l listing.availability_to, :format => :long %>
+            <% end%>
+
+          </b><br/>
+          <small>Availability</small>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="span4"><b><%= listing.price %></b><br/><small>Price</small></div>
+        <div class="span4"><b><%= listing.property_type %></b><br/><small>Property Type</small></div>
+        <div class="span4"><b><%= listing.place_type %></b><br/><small>Place Type</small></div>
+      </div>
+      <div>
+        <% if current_user %>
+          <% if current_user_is_listing_owner? listing %>
+            <%= link_to 'Edit', edit_listing_path(listing) %> |
+            <%= link_to 'Destroy', listing, :confirm => 'Are you sure deleting this listing?', :method => :delete %>
+          <% else %>
+            <%= link_to 'Reserve', reserve_listing_path(listing) %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="nav-secondary">
+  <a href="#" class="active">Homes</a>
+  <a href="#">Experiences</a>
+  <a href="#">Restaurants</a>
+</div>
+
+<div class="first-content">
+  <h3>Homes arouond the world ></h3>
+  <div class="content-row">
+    <div class="card-container">
+      <div class="card-container-img">
+        <img src="https://a0.muscache.com/im/pictures/7a94c770-b55f-42b6-8254-0510714912a0.jpg?aki_policy=poster" alt="" />
+      </div>
+        <div class="card-container-description">
+          <p><span >180€</span>
+            Tag along with one of Italy’s top truffle hunters
+          </p>
+        </div>
+        <div class="card-container-info">
+          <div class="card-container-ratings">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+          </div>
+          <div class="card-container-comments">
+            <p><span>56</span> commentaires
+            </p>
+          </div>
+        </div>
+      </div>
+  
+      <div class="card-container">
+        <div class="card-container-img">
+          <img src="https://a0.muscache.com/im/pictures/facb17cc-ab67-423c-ae60-87c6ffa96a3f.jpg?aki_policy=poster" alt="" />
+        </div>
+        <div class="card-container-description">
+          <p><span >90€</span>
+            Ride horses to medieval villages and landscape
+          </p>
+        </div>
+        <div class="card-container-info">
+          <div class="card-container-ratings">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+          </div>
+          <div class="card-container-comments">
+            <p><span>14</span> commentaires</p>
+          </div>
+        </div>
+      </div>
+  
+      <div class="card-container card1">
+        <div class="card-container-img">
+          <img src="https://a0.muscache.com/im/pictures/7a94c770-b55f-42b6-8254-0510714912a0.jpg?aki_policy=poster" alt="" />
+        </div>
+        <div class="card-container-description">
+          <p><span >180€</span>
+            Tag along with one of Italy’s top truffle hunters
+          </p>
+        </div>
+        <div class="card-container-info">
+          <div class="card-container-ratings">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+          </div>
+          <div class="card-container-comments">
+            <p><span>32</span> commentaires
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="card-container card1">
+        <div class="card-container-img">
+          <img src="https://a0.muscache.com/im/pictures/7a94c770-b55f-42b6-8254-0510714912a0.jpg?aki_policy=poster" alt="" />
+        </div>
+        <div class="card-container-description">
+          <p><span >180€</span>
+            Tag along with one of Italy’s top truffle hunters
+          </p>
+        </div>
+        <div class="card-container-info">
+          <div class="card-container-ratings">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+          </div>
+          <div class="card-container-comments">
+            <p><span>56</span> commentaires
+            </p>
+          </div>
+        </div>
+      </div>
+  
+      <div class="card-container card1">
+        <div class="card-container-img">
+          <img src="https://a0.muscache.com/im/pictures/7a94c770-b55f-42b6-8254-0510714912a0.jpg?aki_policy=poster" alt="" />
+        </div>
+        <div class="card-container-description">
+          <p><span >180€</span>
+            Tag along with one of Italy’s top truffle hunters
+          </p>
+        </div>
+        <div class="card-container-info">
+          <div class="card-container-ratings">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+          </div>
+          <div class="card-container-comments">
+            <p><span>56</span> commentaires
+            </p>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 

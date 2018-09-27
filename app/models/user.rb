@@ -3,19 +3,24 @@ class User < ApplicationRecord
 
   has_many :rooms
   has_many :reservations
+  has_many :listings
   # has_secure_password
 
   before_save { |user| user.email = email.downcase }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :full_name, length: {maximum: 50}, presence: true
+  validates :full_name, length: {maximum: 70}, presence: true
   validates :email, presence: true,
-  format: { with: VALID_EMAIL_REGEX },
-  uniqueness: { case_sensitive: false }
-  validates :password, presence: true, length: { minimum: 6 }
+    format: { with: VALID_EMAIL_REGEX },
+    uniqueness: { case_sensitive: false }
+  validates :encrypted_password, presence: true, length: { minimum: 6 }
 
 
   has_many :authentications, dependent: :destroy
+  # acts_as_booker # Give model permission to make bookings through Bookable gem
+  # mount_uploader :avatar, AvatarUploader # Create uploader
+  enum role: [:customer, :moderator, :superadmin]
 
+  
   def self.create_with_auth_and_hash(authentication, auth_hash)
    user = self.create!(
      full_name: auth_hash["info"]["name"],

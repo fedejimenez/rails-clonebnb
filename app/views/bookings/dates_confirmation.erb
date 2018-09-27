@@ -1,0 +1,13 @@
+<div id="booking-confirmation">
+    You're one step closer to your getaway! Check the details below before continuing to payment. 
+    <p>Check-in: <%= session[:start_date] %></p>
+    <p>Check-out: <%= session[:end_date] %></p>
+    <p>Listing: <%= current_listing.title %></p>
+
+    <div>
+        Everything look good? 
+        <%= form_tag payment_details_path, :method => :get do %>
+            <%= submit_tag("Continue to payment") %>
+        <% end %>
+    </div>
+</div>

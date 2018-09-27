@@ -1,0 +1,10 @@
+<h1>Congratulations, you're going to <%= @listing.city %>!</h1>
+
+<div>
+  <p>
+    Your booking confirmation number is <%= @booking.confirmation_number %>. Please keep a copy of your confirmation for your records.
+  </p>
+  <p>
+    Looking for things to do in <%= @listing.city %>? Well, <%= link_to "Let me google that for you", "http://lmgtfy.com/?q=#{@listing.city}"%>
+  </p>
+</div>

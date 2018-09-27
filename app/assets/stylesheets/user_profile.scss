@@ -1,0 +1,85 @@
+.side-bar{
+    padding-top: 50px;
+    padding-left: 150px;
+}
+
+.btn-profile{
+    width: 225px;
+}
+
+.sidenav {
+    font-family: 'Circular';
+    width: 230px;
+    z-index: 1;
+    background-color: #ffffff;
+    overflow-x: hidden;
+    padding: 8px 0;
+}
+
+.sidenav-item {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #888;
+    display: block;
+}
+
+
+.sidenav-item:active {
+    color: #fff;
+}
+.sidenav-item:hover {
+    color: #ccc;
+}
+
+.panel{
+    border: 1px solid #ccc;
+    margin-top: 50px;
+    width: 80%;
+    font-family: 'Circular';
+    h2{
+        margin: 0;
+        font-size: 20px;
+        background-color: #eee;
+        padding: 10px;
+    }
+    input, textarea{
+        padding-left: 5px;
+        margin-bottom: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        height: 35px;
+        width: 90%;
+    }
+}
+
+.space-4{
+    margin: 15px 0px !important; 
+}
+
+.col-sm-9{
+    select{
+        float: left;
+        font-style: 'Circular';
+        margin-right: 10px;
+        color: #fff;
+        -webkit-appearance: none;
+        appearance: none;
+        border: 1px solid #cccccc;
+        line-height: 0.8;
+        outline: 0;
+        color: black;
+        border-color: #cccccc;
+        padding: 0.65em 2.5em 0.55em 0.75em;
+        border-radius: 3px;
+        background: linear-gradient(#cccccc, #cccccc) no-repeat,
+                  linear-gradient(-135deg, rgba(255,255,255,0) 50%, white 50%) no-repeat,
+                  linear-gradient(-225deg, rgba(255,255,255,0) 50%, white 50%) no-repeat,
+                  linear-gradient(#cccccc, #cccccc) no-repeat;
+        background-color: white;
+        background-size: 1px 100%, 20px 20px, 20px 20px, 20px 40%;
+        background-position: right 20px center, right bottom, right bottom, right bottom;  
+    }
+
+}
+

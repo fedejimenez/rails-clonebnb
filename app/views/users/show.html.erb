@@ -1,0 +1,24 @@
+<%= render "user" %>
+<h3>Welcome, <%= current_user.full_name %></h3>
+
+<div id = "user-details">
+  <p>First name: <%= current_user.firstname %></p>
+  <p>Last name: <%= current_user.lastname %></p>
+  <p>Email: <%= current_user.email %></p>
+  <p>Date joined AirBnB: <%= current_user.created_at %></p>
+  <%= link_to 'Edit', edit_user_path(current_user) %>
+
+</div>
+
+<div id = "user-listings">
+  <h4>My listings: </h4>
+    <% user_listings = Listing.where(user_id: current_user.id) %>
+    <% user_listings.each do |listing| %>
+      <div class = "listing-container">
+        <p><strong><%= listing.name %></strong></p>
+        <p><%= listing.description %></p>
+        <%= link_to "Edit this listing", edit_listing_path(listing) %>
+      </div>
+    <% end %>
+</div>
+

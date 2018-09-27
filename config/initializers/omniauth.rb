@@ -10,7 +10,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
 
   	provider :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET']
   	{
-  		scope: 'email, user_friends',
+  		scope: 'email, user_friends, public_profile',
   		display: 'popup'
   	}
 end

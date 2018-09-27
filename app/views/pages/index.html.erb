@@ -1,23 +1,35 @@
 <div class="page-header">
-	<h1>Welcome! 
+	<h1>Select your next destination! 
+
+    <!-- <input id="pac-input" class="controls" type="text" placeholder="Search for Something"> -->
+    <!-- <div id="map-canvas"></div> -->
+
 		<% if logged_in? %>
-			<span><%= current_user.full_name %></span>
+      <span><%= current_user.full_name %></span>
 			<%= button_to ("Sign out"), sign_out_path, method: :delete, class: 'btn btn-primary' %>
 		<% end %>
-	</h1>
-</div>
+  	</h1>
+  </div>
 
 <div id="flash">
-  <% flash.each do |key, value| %>
-    <div class="flash <%= key %>"><%= value %></div>
+<% flash.each do |key, value| %>
+  <div class="flash <%= key %>"><%= value %></div>
 <% end %>
 
+<%= link_to "Homes", listings_path %>
 
-
-
-
-
-
-
-
+<% form_tag search_path, :method => 'get' do %>
+  <%= label :search, "Place" %><br />
+  <%= text_field :search, :place %><br />
+  <br />
+  <%= label :search, "Check In" %><br />
+  <%= date_select :search, :check_in %><br />
+  <br />
+  <%= label :search, "Check Out" %><br />
+  <%= date_select :search, :check_out %><br />
+  <br />
+  <%= label :search, "Guests count" %><br />
+  <%= text_field :search, :guests_count %><br />
+  <%= submit_tag "Search", :name=>nil, :class => "btn btn-success" %>
+<% end %>
 

@@ -1,0 +1,363 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myCollapseBar">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+	<div class="nav-logo">
+	<a href="/"><img src="https://s-media-cache-ak0.pinimg.com/originals/92/bf/b7/92bfb777f072d29e4c09b6feca4e487c.png" alt="home" />
+	</a>
+	</div>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="myCollapseBar">
+    <div class="col-sm-3 col-md-4" id="nav-search">
+        <form class="" role="search">
+	        <div class="nav-search">
+	      	<input class="" id="autocomplete" placeholder="Anywhere - Homes" type="text">
+	            <div class="input-group-btn" id="locationField">
+	            </div>
+	        </div>
+        </form>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+	    <li>
+	      <a href="#" >Start Hosting</a>
+	    </li>
+		<% if logged_in? %>
+			<li>
+				<a href="#" data-toggle="modal" data-target="#">Save</a>
+			</li>
+			<li >
+				<a href="#" class="dropdown-toggle" data-toggle="modal" data-target="#">Trip</a>
+			</li>
+			<li >
+				<a href="#" class="dropdown-toggle" data-toggle="modal" data-target="#">Messages</a>
+			</li>
+		<% end %>
+		<li>
+			<a href="#" data-toggle="" data-target="">Help</a>
+		</li>
+		<% if !logged_in? %>
+			<li>
+				<a href="#" data-toggle="modal" data-target="#at-signup">Sign Up</a>
+			</li>
+			<li >
+				<a href="#" class="dropdown-toggle" data-toggle="modal" data-target="#at-login">Log in</a>
+			</li>
+		<% end %>
+
+		<% if logged_in? %>
+	  		<li class="dropdown nav-right">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				<% if current_user.avatar !=nil %>
+				<%= image_tag("current_user.avatar", :alt => "avatar") %>
+				<% else %>	
+					<!-- <img src="https://randomuser.me/api/portraits/men/69.jpg" alt=""/> -->
+					<%= image_tag("avatar.svg", :alt => "avatar") %>
+
+				<% end %>	
+				<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+		          <li><%= link_to "Edit Profile", "/users/show" %></li> 
+		          <li><a href="#">Invite friends </a></li>
+		          <li><a href="#">Refer Hosts </a></li>
+		          <li><a href="#">Account Settings</a></li>
+		          <li><a href="#">My Guidebook</a></li>
+		          <li><a href="#">Clonebnb for work</a></li>
+		          <li class="divider"></li>
+		          <li>
+		          	<%= link_to ("Log Out"), sign_out_path, method: :delete %></a>
+		          </li>
+		        </ul>
+			</li>
+		<% end %>
+    </ul>
+  </div>
+</nav><!-- /.navbar-default -->
+
+<!-- SECOND NAVBAR WITH FILTERS FOR SEARCH -->
+<div class="navbar navbar-secondary" id="navbar-submenu" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+<!--   <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myCollapseBar2">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  </div>
+ -->
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="myCollapseBar2">
+    <ul class="nav navbar-nav navbar-left">
+      <li class="dropdown">
+        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Dates 
+        </button>
+      <ul class="dropdown-menu">
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">My Bookings </a></li>
+          <li><a href="#">Privacy</a></li>
+      </ul>
+    </li>
+      <li class="dropdown">
+        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Guests 
+        </button>
+      <ul class="dropdown-menu">
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">My Bookings </a></li>
+          <li><a href="#">Privacy</a></li>
+      </ul>
+    </li>
+      <li class="dropdown">
+        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Home type 
+        </button>
+      <ul class="dropdown-menu">
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">My Bookings </a></li>
+          <li><a href="#">Privacy</a></li>
+      </ul>
+    </li>
+
+      <li class="dropdown">
+        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Price 
+        </button>
+      <ul class="dropdown-menu">
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">My Bookings </a></li>
+          <li><a href="#">Privacy</a></li>
+      </ul>
+    </li>
+      <li class="dropdown">
+        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Instant Book 
+        </button>
+      <ul class="dropdown-menu">
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">My Bookings </a></li>
+          <li><a href="#">Privacy</a></li>
+      </ul>
+    </li>
+      <li class="dropdown">
+        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Trip Type
+        </button>
+      <ul class="dropdown-menu">
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">My Bookings </a></li>
+          <li><a href="#">Privacy</a></li>
+      </ul>
+    </li>
+      <li class="dropdown">
+        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">More filters
+        </button>
+      <ul class="dropdown-menu">
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">My Bookings </a></li>
+          <li><a href="#">Privacy</a></li>
+      </ul>
+    </li>
+    </ul>
+  </div>
+</div>  <!-- /.navbar-collapse -->
+
+
+<div class="container">
+    <div class="row">
+		<div class="col-md-12">
+			<section class="at-login-form">
+				<!-- MODAL LOGIN -->
+				<div class="modal fade" id="at-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="">
+									<span aria-hidden="true">×</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<%= button_tag onclick: "location.href='/auth/facebook'",
+								  type: :button, class: "btn-fb" do %>
+								  <i class="fa fa-fw fa-facebook" aria-hidden="true"></i>
+								  <%= t("Log in with facebook")%>
+								<% end %>
+
+								<%= button_tag onclick: "location.href='/auth/google_oauth2'",
+								  type: :button, class: "btn-gp" do %>
+								  <i class="fa fa-fw fa-google-plus" aria-hidden="true"></i>
+								  <%= t("Log in with Google")%>
+								<% end %>
+
+								<div class="signup-or-separator">
+									<span class="h6 signup-or-separator--text">or</span>
+									<hr>
+								</div>
+								<!--   RENDERED FORM -->
+								<%= render template: "sessions/new" %>
+								<div class="row">	
+									<div class="col-md-6">
+										<div class="checkbox">
+											<label>
+												<input type="checkbox"> Remember me
+											</label>
+										</div>	
+									</div>
+									<div class="col-md-4 col-md-offset-2">	
+										<p class="frgt-pswd"   data-toggle="modal" data-dismiss="modal"  data-target="#at-reset-pswd">	Forgot Password ?</p>
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<div class="row">	
+									<div class="col-md-6">
+										<p class="ta-l">Don't have an account ? </p>
+									</div>	
+									<div class="col-md-4 col-md-offset-2">	
+										<button class="btn-gst"  data-toggle="modal"  data-dismiss="modal" data-target="#at-signup" >Sign Up </button>
+									</div>
+								</div>
+							</div>  <!-- FOOTER ENDS-->
+						</div><!--   MODAL CONTENT ENDS -->
+					</div>  <!--  MODAL DIALOG ENDS -->
+				</div>  <!-- MODAL LOGIN ENDS -->
+
+				<!-- MODAL SIGNUP -->
+				<div class="modal fade" id="at-signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+							</div>
+							<div class="modal-body">
+								<%= button_tag onclick: "location.href='/auth/google_oauth2'",
+								  type: :button, class: "btn-fb" do %>
+								  <i class="fa fa-fw fa-facebook" aria-hidden="true"></i>
+								  <%= t('.Sign_up_with_Facebook')%>
+								<% end %>
+
+								<%= button_tag onclick: "location.href='/auth/google_oauth2'",
+								  type: :button, class: "btn-gp" do %>
+								  <i class="fa fa-fw fa-google-plus" aria-hidden="true"></i>
+								  <%= t('.Sign_up_with_Google')%>
+								<% end %>
+
+								<div class="signup-or-separator">
+									<span class="h6 signup-or-separator--text">or</span>
+									<hr>
+								</div>
+								<button type="submit" class="btn-lgin" data-toggle="modal"  data-dismiss="modal" data-target="#at-signup-filling">
+								<i class="fa fa-envelope" aria-hidden="true"></i>
+								Sign up with Email
+								</button> <hr>	
+								<p>By signing up, I agree to Airbnb’s , Payments <a href="#">Terms of Service</a>, <a href="#">Privacy Policy</a>, <a href="#">Guest Refund Policy</a>, and <a href="#">Host Guarantee Terms</a>. </p>
+							</div>
+							<div class="modal-footer">
+								<div class="row">	
+									<div class="col-md-6">
+										<p class="ta-l">Already a Member? </p>
+									</div>	
+									<div class="col-md-4 col-md-offset-2">	
+										<button class="btn-gst"  data-toggle="modal"  data-dismiss="modal" data-target="#at-login">Login</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>  <!-- MODAL DIALOG ENDS -->
+				</div> <!-- MODAL SIGNUP ENDS -->
+
+				<!-- MODAL SIGNUP FORM FILLING -->
+				<div class="modal fade" id="at-signup-filling" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">×</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<p>Sign up with <a href="#">Facebook</a>  or <a href="#">Google</a></p>
+								<div class="signup-or-separator">
+									<span class="h6 signup-or-separator--text">or
+									</span><hr>
+								</div>
+								<!--  RENDERED FORM -->
+								<%= render template: "users/new" %>
+
+								<div class="row">	
+									<div class="col-md-12">	
+										<div class="checkbox">
+											<label>
+												<input type="checkbox"> 
+												I’d like to receive coupons and inspiration 
+											</label>
+										</div>
+										<p>By signing up, I agree to Airbnb’s , Payments <a href="#">Terms of Service</a>, <a href="#">Privacy Policy</a>, <a href="#">Guest Refund Policy</a>, and <a href="#">Host Guarantee Terms</a>. </p>
+									</div>			
+								</div>
+							</div>
+							<div class="modal-footer">
+								<div class="row">	
+									<div class="col-md-6">
+										<p class="ta-l">Already a Member? </p>
+									</div>	
+									<div class="col-md-4 col-md-offset-2">	
+										<button class="btn-gst"  data-toggle="modal"  data-dismiss="modal" data-target="#at-login">Login</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> <!-- MODAL SIGNUP FORM FILLING ENDS -->
+								
+				<!-- MODAL FORGOT PASSWORD -->
+				<div class="modal fade" id="at-reset-pswd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+							</div>
+							<div class="modal-body">
+								<form>
+									<p>	Enter the email address associated with your account, and we’ll email you a link to reset your password. </p>
+									<div class="form-group">
+
+										<input type="email" class="form-control-form " placeholder="Email">
+									</div>
+								</form>
+							</div>
+							<div class="modal-footer">
+							</div>
+						</div>
+					</div>
+				</div> <!-- MODAL FORGOT PASSWORD ENDS -->
+
+				<!-- MODAL HELP -->
+				<div class="modal fade" id="at-helping" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+							</div>
+							<div class="modal-body">
+								<form>
+									<div class="form-group">
+										<input type="text" class="form-control-form "  placeholder="Enter Your Searches ">
+									</div>
+								</form>
+							</div>
+							<div class="modal-footer">
+								<div class="row">	
+									<button class="btn-gst"  data-toggle="modal"  data-dismiss="modal" >Send areset Link</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> <!-- MODAL HELP ENDS -->
+			</section>
+		</div>
+	</div>
+</div>
+

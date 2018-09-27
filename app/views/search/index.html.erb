@@ -1,0 +1,11 @@
+Search results:
+
+  <div>
+    <% if @results.length > 0 %>
+      <% @results.each do |result| %>
+        <%= render '/search/results', result: Listing.find(result[:searchable_id])%>
+      <% end %>
+    <% else %>
+      Sorry, we couldn't find any results.
+    <% end %>
+  </div>
