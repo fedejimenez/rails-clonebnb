@@ -63,8 +63,6 @@ GEM
     braintree (2.90.0)
       builder (>= 2.0.0)
     builder (3.2.3)
-    bulma-rails (0.6.2)
-      sass (~> 3.2)
     byebug (10.0.2)
     capybara (3.8.1)
       addressable
@@ -313,7 +311,6 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   bootstrap-sass (~> 3.2.0)
   braintree
-  bulma-rails (~> 0.6.2)
   byebug
   capybara (>= 2.15)
   carrierwave (~> 1.0)
