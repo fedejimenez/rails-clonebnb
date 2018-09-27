@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
   has_many :authentications, dependent: :destroy
   # acts_as_booker # Give model permission to make bookings through Bookable gem
-  # mount_uploader :avatar, AvatarUploader # Create uploader
+  mount_uploader :avatar, AvatarUploader # Create uploader
   enum role: [:customer, :moderator, :superadmin]
 
   
