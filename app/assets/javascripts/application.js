@@ -29,7 +29,6 @@ function initAutocomplete() {
 	    {types: ['geocode']});
 	autocomplete.addListener('place_changed',  function() {
 	// var place = autocomplete.getPlace();
-	// console.log(place);
   });
 }
 
@@ -51,7 +50,6 @@ function myFunction() {
             {
                 //hide rows
                 tableRowsClass.eq(i).hide();
-                
             }
             else
             {
@@ -67,7 +65,8 @@ function myFunction() {
     });
 }
 
-// Infinite scrolling
-$("#myTable").append("<tbody class='page'><%= escape_javascript(render(@listings)) %></tbody>");
+// Caroussel
+
+
 
 

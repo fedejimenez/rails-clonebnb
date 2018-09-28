@@ -15,8 +15,7 @@
     <% @listing_images.each do |listing_image| %>
       <tr>
         <td><%= listing_image.listing_id %></td>
-        <td><%= listing_image.avatar %></td>
-        <td><%= link_to 'Show', listing_image %></td>
+        <td><%= link_to 'Show', listing_image_path %></td>
         <td><%= link_to 'Edit', edit_listing_image_path(listing_image) %></td>
         <td><%= link_to 'Destroy', listing_image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

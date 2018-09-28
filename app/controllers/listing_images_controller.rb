@@ -45,7 +45,7 @@ class ListingImagesController < ApplicationController
   def update
     respond_to do |format|
       if @listing_image.update(listing_image_params)
-        format.html { redirect_to @listing_image, notice: 'Listing image was successfully updated.' }
+        format.html { redirect_to listings_image, notice: 'Listing image was successfully updated.' }
         format.json { render :show, status: :ok, location: @listing_image }
       else
         format.html { render :edit }
@@ -59,7 +59,7 @@ class ListingImagesController < ApplicationController
   def destroy
     @listing_image.destroy
     respond_to do |format|
-      format.html { redirect_to listing_images_url, notice: 'Listing image was successfully destroyed.' }
+      format.html { redirect_back fallback_location: root_path, notice: 'Listing image was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

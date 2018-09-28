@@ -9,13 +9,6 @@
 	border-radius: 50%;
 }
 
-#gallery{
-	width: 300px;
-	height: 300px;
-	img{
-	}
-}
-
 /* The hero image */
 .hero-image {
     /* Use "linear-gradient" to add a darken background effect to the image. This will make the text easier to read */
@@ -40,4 +33,27 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
+}
+
+//  Carousel
+#myCarousel{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+#carousel-container{
+	width: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+	.carousel-inner{
+	}
+	img{
+		
+	}
+	.carousel-control{
+		padding-top: 150px;
+	}
 }

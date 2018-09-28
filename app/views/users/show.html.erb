@@ -12,14 +12,11 @@
 <div class="form-group">
   <%= form_for(current_user) do |form| %>
     <%= form.label :profile_picture%>
-
     <%= form.file_field :avatar %> 
     <%= form.submit 'Update Picture'%>
     <%= form.check_box :remove_avatar%>
-          Remove picture 
-  
+         Remove picture 
   <% end%>
-
 </div>
 
 <div id = "user-details">

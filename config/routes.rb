@@ -42,6 +42,10 @@ Rails.application.routes.draw do
       resources :listing_images
   end
   post '/listings/:listing_id/listing_images/new' => 'listing_images#create'
+  get '/listings/:listing_id/listing_images/new' => 'listing_images#create'
+  # get '/listings/:listing_id/listing_images/:id/edit' => 'listing_images#edit'
+  post '/listings/:listing_id/listing_images/edit' => 'listing_images#edit'
+  get '/listings/:listing_id/listing_images/edit' => 'listing_images#edit'
 
   resources :rooms
   resources :photos
