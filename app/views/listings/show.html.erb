@@ -1,12 +1,30 @@
  <% listing_type = current_listing.property_type %>
  
-  <div id="gallery-container">
+<div id="gallery-container">
     <i class="fas fa-plus" id="icon-add-photos"></i>
     <div id="gallery">
-
+      <% if @listing.listing_images.present? %>
+        <% @listing.listing_images.each_with_index do |img, index| %>
+          <div class="image-container" index="<%=index%>">
+            <%= image_tag(img.image_url(:thumb).to_s, :class => "listing-image", :index => "#{index}") %>
+            <i class="fas fa-trash-alt bottom-left"></i>
+          </div>
+        <% end %>
+      <div class="actions">
+        <%= link_to "remove", @listing_image, :confirm => 'Are you sure?', :method => :delete %>
+      </div> 
+      <% else %>
+      <div class="hero-image">
+        <div class="hero-text">
+          <h1>Hey!</h1>
+          <p>You're not gonna receive visitors if you don't have an Image Gallery!</p>
+          <%= button_to "Add Gallery now", new_listing_listing_image_path(@listing.id), method: "get", class:"btn btn-info" %>
+        </div>
+      </div>
+    <% end %>
     </div>
-  </div>
-  
+</div>
+
 <div id="show-container" class="columns">
   <div class="column is-three-fifths">
     <div id="listing-show-page"> 
@@ -76,11 +94,11 @@
       
     </div>
   </div>
-  <% if @listing.user_id == current_user %>
-    <%= link_to 'Edit', edit_listing_path(@listing) %>
-  <% end %>
   <div class="column">
     <%= render "listings/bookingform" %>
+    <% if @listing.user_id == current_user.id.to_s %>
+      <%= link_to 'Edit', edit_listing_path(@listing) %>
+    <% end %>
     <%= link_to 'Back', listings_path %>
   </div>
 

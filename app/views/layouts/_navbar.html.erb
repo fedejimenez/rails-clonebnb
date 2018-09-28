@@ -55,10 +55,10 @@
 	  		<li class="dropdown nav-right">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				<% if current_user.avatar.blank? %>
-					<%= image_tag("avatar.svg", :alt => "avatar") %>
+					<%= image_tag("avatar.svg", :alt => "avatar", id:"img-avatar") %>
 				<% else %>	
 					<!-- <img src="https://randomuser.me/api/portraits/men/69.jpg" alt=""/> -->
-				<%= image_tag(current_user.avatar.url, :alt => "avatar", class: "avatar") %>
+				<%= image_tag(current_user.avatar.url, :alt => "avatar", id:"img-avatar") %>
 
 				<% end %>	
 				<b class="caret"></b></a>

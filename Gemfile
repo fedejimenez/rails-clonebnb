@@ -60,6 +60,8 @@ gem 'kaminari'
 
 # Use CarrierWave for image uploading
 gem 'carrierwave', '~> 1.0'
+# Use mini_magick to resize images
+gem 'mini_magick'
 
 # Use acts as bookable
 # gem 'acts_as_bookable'
