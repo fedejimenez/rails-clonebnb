@@ -29,7 +29,8 @@
 	<%= render "layouts/footer" %>
 
 
- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyIOuC6WLUE8taQvrAiUoa5aV6f-b84Xc&libraries=places&callback=initAutocomplete" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['YOUR_API_KEY_ENV'] %>&libraries=places&callback=initAutocomplete" async defer></script>
+
 </body>
 </html>
 

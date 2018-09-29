@@ -49,7 +49,7 @@ gem 'font-awesome-rails'
 # Use Jquery
 gem 'jquery-rails'
 
-# Use Figaro
+# Use Figaro (Protecting keys)
 gem 'figaro'
 
 # Use faker
@@ -63,8 +63,11 @@ gem 'carrierwave', '~> 1.0'
 # Use mini_magick to resize images
 gem 'mini_magick'
 
-# Use acts as bookable
+# Use acts as bookable for bookings
 gem 'acts_as_bookable'
+
+# Use Braintree for payments
+gem 'braintree'
 
 # Framework Bulma for CSS
 # gem "bulma-rails", "~> 0.6.2" 
