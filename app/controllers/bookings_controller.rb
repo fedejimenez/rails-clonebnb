@@ -24,13 +24,13 @@ class BookingsController < ApplicationController
   end
   
   def dates_confirmation
-    if current_listing.is_available?(params[:start_date],params[:end_date])
+    # if current_listing.is_available?(params[:start_date],params[:end_date])
       session[:start_date] = params[:start_date]
       session[:end_date] = params[:end_date]
-    else
-      flash[:booking_error] = "Sorry - some of your dates weren't available."
-      redirect_to listing_path
-    end 
+    # else
+    #   flash[:booking_error] = "Sorry - some of your dates weren't available."
+    #   redirect_to listing_path
+    # end 
   end
   
   def book_finalization
