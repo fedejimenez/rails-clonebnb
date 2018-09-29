@@ -38,11 +38,6 @@
         </div> <!-- End carouse container -->
         <br>
       </div>
-      <div class="actions">
-        <% if signed_in? && (current_user.id.to_s == current_listing.user_id || current_user.superadmin?) %>
-          <%= link_to "Add Image", new_listing_listing_image_path(current_listing), method: "get" %>
-        <% end %>
-      </div> 
     <% else %>
         <% if signed_in? && (current_user.id.to_s == current_listing.user_id || current_user.superadmin?) %>
           <div class="hero-image">
@@ -128,7 +123,7 @@
   </div>
   <div class="column">
     <%= render "listings/bookingform" %>
-    <% if @listing.user_id == current_user.id.to_s %>
+    <% if signed_in? && (@listing.user_id == current_user.id.to_s) %>
       <%= link_to 'Edit', edit_listing_path(@listing) %>
     <% end %>
     <%= link_to 'Back', listings_path %>

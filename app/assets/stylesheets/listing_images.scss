@@ -57,3 +57,16 @@
 		padding-top: 150px;
 	}
 }
+
+// panels with images
+.panel-default{
+	width: 530px !important;
+	height: 400px !important;
+}
+.panel-heading{
+	img{
+		width: 100%;
+		max-height: 300px;
+	}
+
+}

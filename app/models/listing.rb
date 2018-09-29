@@ -1,7 +1,7 @@
 # class Listing < ApplicationRecord
 class Listing < ActiveRecord::Base
 
-	# # Associations
+# # Associations
  #  belongs_to :user
  #  # acts_as_bookable time_type: :range, bookable_across_occurrences: true
 

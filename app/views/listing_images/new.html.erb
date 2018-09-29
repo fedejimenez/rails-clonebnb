@@ -1,5 +1,9 @@
 <h1>New Listing Image</h1>
 
-<%= render 'form' %>
+<%= form_with scope: :listing_image, url: new_listing_listing_image_path(params[:listing_id]), local: true do |f| %>
+
+	<%= render 'form' %>
+
+<% end %>
 
 <%= link_to 'Back', listings_path %>

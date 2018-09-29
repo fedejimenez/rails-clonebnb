@@ -1,0 +1,50 @@
+<div class="row">
+	 <% if @listing.listing_images.present? %>
+	    <% @listing.listing_images.each_with_index do |img, index| %>
+	     <div class="col-md-4">   
+		  <div class="panel panel-default">
+		  	<div class="panel-heading">
+		  		<figure>
+		            <!--  chose size, thumb / small / medium in PhotoUplader -->
+		         	<%= image_tag(img.image_url(:medium).to_s, :class => "", :index => "#{index}") %>
+		            <figcaption>
+			            <%= img.id %>
+			            <%= img.title %>
+			            <%= img.description %>
+		        	</figcaption>
+	        	</figure>
+	        </div>
+	        <div class="panel-body">
+	           <span>	
+				<%= link_to edit_listing_listing_image_path(current_listing.id, img.id), local: true do %>
+					<i class="fa fa-edit" aria-hidden="true">  Edit</i>
+				<% end %>
+			   </span>	  
+	           <span>	
+				<%= link_to listing_listing_image_path(current_listing.id, img.id), remote: true, method: :delete, data: {confirm: "Are you sure?"} do %>
+					<i class="fa fa-trash-o" aria-hidden="true">  Delete</i>
+				<% end %>
+			   </span>	        	
+	        </div>
+		   </div>
+	      </div>
+	  	<% end %>
+	    <br>
+	    <div class="clearfix"></div>
+	    <div class="actions">
+	      <% if signed_in? && (current_user.id.to_s == current_listing.user_id || current_user.superadmin?) %>
+	        <%= link_to "Add a new Image", new_listing_listing_image_path(current_listing), method: "get" %>
+	      <% end %>
+	    </div> 
+    <% else %>
+        <% if signed_in? && (current_user.id.to_s == current_listing.user_id || current_user.superadmin?) %>
+          <div class="hero-image">
+            <div class="hero-text">
+              <h1>Hey!</h1>
+              <p>You're not gonna receive bookings if you don't have an Image Gallery!</p>
+              <%= button_to "Add Gallery now", new_listing_listing_image_path(@listing.id), method: "get", class:"btn btn-info" %>
+            </div>
+          </div>
+        <% end %>
+    <% end %>
+</div>
