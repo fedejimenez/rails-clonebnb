@@ -64,7 +64,7 @@ gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
 
 # Use acts as bookable for bookings
-gem 'acts_as_bookable'
+# gem 'acts_as_bookable'
 
 # Use Braintree for payments
 gem 'braintree'
@@ -78,8 +78,7 @@ gem 'braintree'
 # gem 'pg', '~>0.18.0'
 
 gem 'activerecord'
-gem 'heroku'
-gem 'braintree'
+# gem 'heroku'
 gem 'sidekiq'
 gem 'rails_12factor'
 gem 'pg_search'

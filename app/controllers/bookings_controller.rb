@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
-  # include ApplicationHelper
+  # include ListingsnHelper
+  include ApplicationHelper
   
   before_action :require_permission, except: [:dates_confirmation]
   
@@ -28,8 +29,8 @@ class BookingsController < ApplicationController
       session[:start_date] = params[:start_date]
       session[:end_date] = params[:end_date]
     # else
-    #   flash[:booking_error] = "Sorry - some of your dates weren't available."
-    #   redirect_to listing_path
+      # flash[:booking_error] = "Sorry - some of your dates weren't available."
+      # redirect_to listing_path
     # end 
   end
   

@@ -146,7 +146,8 @@ class Listing < ActiveRecord::Base
     end
   
     def is_available?(start_date, end_date)
-      range = date_range(start_date, end_date)
+      range_booking = date_range(start_date, end_date)
+      # range_available = date_range(self.availability_from, self.availability_to)
       range.each do |date|
         date = date.to_date.strftime # Issue in different formats- converting to date then back to string gets all dates to same format
         if self.dates.include?(date)
