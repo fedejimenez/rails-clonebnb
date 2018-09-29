@@ -1,8 +1,8 @@
-<%= form_for(@listing_image) do |f| %>
+
+ <%= form_with scope: :listing_image, url: new_listing_listing_image_path(params[:listing_id]), local: true do |f| %>
   <% if @listing_image.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@listing_image.errors.count, "error") %> prohibited this listing_image from being saved:</h2>
-
       <ul>
       <% @listing_image.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,16 +10,30 @@
       </ul>
     </div>
   <% end %>
-
+  
+  <label for=""> Add a new Image </label>
   <div class="field">
     <%= f.label :listing_id %><br>
-    <%= f.number_field :listing_id %>
   </div>
   <div class="field">
-    <%= f.label :avatar %><br>
-    <%= f.text_field :avatar %>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :image, "Upload an image from your local device" %><br>
+    <%= f.file_field :image %>
+  </div>
+  <div class="field">
+    <%= f.label :remote_image_url, "Upload an image from the web" %><br>
+    <%= f.text_field :remote_image_url %>
+    <p><small><a href="https://www.pexels.com/search/apartments/", target="_blank">("https://www.pexels.com/search/apartments/")</a></small></p>
+    <p><small><a href="https://unsplash.com/search/photos/apartments", target="_blank">"https://unsplash.com/search/photos/apartments"</a></small></p>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Upload'%>
   </div>
 <% end %>

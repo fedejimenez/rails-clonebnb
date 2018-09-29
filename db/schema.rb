@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_25_003145) do
+ActiveRecord::Schema.define(version: 2018_09_27_121907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,8 @@ ActiveRecord::Schema.define(version: 2018_09_25_003145) do
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title"
+    t.string "description"
   end
 
   create_table "listings", force: :cascade do |t|
@@ -101,7 +103,7 @@ ActiveRecord::Schema.define(version: 2018_09_25_003145) do
     t.integer "notice_period", default: 5, null: false
     t.integer "maximum_guests", default: 1, null: false
     t.integer "bathrooms"
-    t.json "photos"
+    t.string "photo"
     t.integer "rating", default: 0
     t.text "schedule"
   end

@@ -26,10 +26,12 @@ class ListingImagesController < ApplicationController
   # POST /listing_images.json
   def create
     @listing_image = ListingImage.new(listing_image_params)
+    @listing_image.listing_id = params[:listing_id]
+
 
     respond_to do |format|
       if @listing_image.save
-        format.html { redirect_to @listing_image, notice: 'Listing image was successfully created.' }
+        format.html { redirect_to listings_path, notice: 'Listing image was successfully created.' }
         format.json { render :show, status: :created, location: @listing_image }
       else
         format.html { render :new }
@@ -43,7 +45,7 @@ class ListingImagesController < ApplicationController
   def update
     respond_to do |format|
       if @listing_image.update(listing_image_params)
-        format.html { redirect_to @listing_image, notice: 'Listing image was successfully updated.' }
+        format.html { redirect_to listings_image, notice: 'Listing image was successfully updated.' }
         format.json { render :show, status: :ok, location: @listing_image }
       else
         format.html { render :edit }
@@ -57,7 +59,7 @@ class ListingImagesController < ApplicationController
   def destroy
     @listing_image.destroy
     respond_to do |format|
-      format.html { redirect_to listing_images_url, notice: 'Listing image was successfully destroyed.' }
+      format.html { redirect_back fallback_location: root_path, notice: 'Listing image was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -70,6 +72,6 @@ class ListingImagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_image_params
-      params.require(:listing_image).permit(:listing_id, :avatar)
+      params.require(:listing_image).permit(:listing_id, :title, :description, :image, :local_image_url, :remote_image_url)
     end
 end

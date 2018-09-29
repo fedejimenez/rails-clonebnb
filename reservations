@@ -111,7 +111,7 @@ e html form
   another way
   <%= form_with model: [@listing, @reservation] do |f| %>
   <% end %>
-  need to chang in listing_controller 
+  need to change in listing_controller 
   def show
   @reservation = Reservation.new(reservation)
   end

@@ -34,8 +34,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :de`velopment
 
 #  ##################################################
-# Non default gems added to the project
-#####################################################
+#       Non default gems added to the project
+#  ####################################################
 
 #Use Clearance Engine (Rails authentication with email & password)
 gem "clearance"
@@ -58,10 +58,18 @@ gem 'faker', :git => 'https://github.com/stympy/faker.git'
 # Use pagination
 gem 'kaminari'
 
+# Use CarrierWave for image uploading
+gem 'carrierwave', '~> 1.0'
+# Use mini_magick to resize images
+gem 'mini_magick'
+
 # Use acts as bookable
 # gem 'acts_as_bookable'
 
-gem "bulma-rails", "~> 0.6.2"
+# Framework Bulma for CSS
+# gem "bulma-rails", "~> 0.6.2" 
+
+
 
 # Postgresql version downgraded to be compatible with ActiveRecord
 # gem 'pg', '~>0.18.0'
@@ -72,7 +80,6 @@ gem 'braintree'
 gem 'sidekiq'
 gem 'rails_12factor'
 gem 'pg_search'
-gem 'carrierwave', '~> 1.0'
 gem 'fog-aws'
 
 # Use Omniauth 

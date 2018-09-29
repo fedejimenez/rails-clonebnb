@@ -4,5 +4,6 @@
   <%= form_for @listing, url: {action: "update"} do |f| %>
     <%= render '/listings/form', f: f %>
   <% end %>
+  <%= link_to 'Back', listings_path %>
   
 </div>

@@ -55,6 +55,8 @@ class ListingsController < ApplicationController
   # GET /listings/1.json
   def show
     @listing_images = @listing.listing_images.all
+    # @listing_images = ListingImage.new(listing_image)
+
   end
 
   # GET /listings/new

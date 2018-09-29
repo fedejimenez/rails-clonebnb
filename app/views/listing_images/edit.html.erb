@@ -1,6 +1,10 @@
 <h1>Editing Listing Image</h1>
-
+	<div class="image-container">
+		<!--  chose size, thumb / small / medium in PhotoUplader -->
+		<%= image_tag(@listing_image.image_url(:small).to_s, :class => "listing-image") %>
+		<i class="fa fa-trash-alt bottom-left"></i>
+	</div>
 <%= render 'form' %>
 
-<%= link_to 'Show', @listing_image %> |
-<%= link_to 'Back', listing_images_path %>
+<%= link_to 'Show', listing_listing_image_path %> |
+<%= link_to 'Back', listing_listing_images_path %>

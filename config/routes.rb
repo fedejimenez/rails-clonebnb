@@ -38,6 +38,15 @@ Rails.application.routes.draw do
   
   resources :users
 
+  resources :listings do
+      resources :listing_images
+  end
+  post '/listings/:listing_id/listing_images/new' => 'listing_images#create'
+  get '/listings/:listing_id/listing_images/new' => 'listing_images#create'
+  # get '/listings/:listing_id/listing_images/:id/edit' => 'listing_images#edit'
+  post '/listings/:listing_id/listing_images/edit' => 'listing_images#edit'
+  get '/listings/:listing_id/listing_images/edit' => 'listing_images#edit'
+
   resources :rooms
   resources :photos
 
@@ -50,6 +59,7 @@ Rails.application.routes.draw do
   get '/logout', :controller => 'user_sessions', :action => 'destroy'
   get '/users', :controller => 'users', :action => 'index'
   post '/users/:id' => 'users#edit'
+
 
   get '/search', :controller => 'pages', :action => 'search'
 
