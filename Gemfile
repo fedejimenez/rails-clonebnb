@@ -64,7 +64,7 @@ gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
 
 # Use acts as bookable
-# gem 'acts_as_bookable'
+gem 'acts_as_bookable'
 
 # Framework Bulma for CSS
 # gem "bulma-rails", "~> 0.6.2" 

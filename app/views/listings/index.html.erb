@@ -1,23 +1,16 @@
 
 <p id="notice"><%= notice %></p>
 
-<!-- <h1>Listings</h1> -->
-<!-- <div class="column is-two-thirds"> -->
-  <!-- <div id="listings-container"> -->
-    <% @listings.each do |listing| %>
-      <%= render "/listings/detail", listing: listing %>
-      <%= paginate @listings %>
-    <% end %>
-
-  <!-- </div> -->
-<!-- </div> -->
+<%= render "/listings/detail" %>
+<div class="row">
+    <%= paginate @listings %> 
+</div>
 
 
+<label for=""> List </label>
 <div class="row">
   <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for word.." title="Type in a word" >
 </div>
-
-<%= paginate @listings %>
 
 <table class="table table-list-search table-striped table-bordered" id="myTable">
   <thead>
@@ -65,9 +58,7 @@
   </tbody>
 </table>
 
-<%= link_to 'More Listings', listings_path %>
 <%= paginate @listings %>
-
 
 <br>
 

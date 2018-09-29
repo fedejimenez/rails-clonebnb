@@ -4,7 +4,13 @@
 		<%= image_tag(@listing_image.image_url(:small).to_s, :class => "listing-image") %>
 		<i class="fa fa-trash-alt bottom-left"></i>
 	</div>
-<%= render 'form' %>
+
+<%= form_for :listing_image, url: {action: "update", params: {listing_id: current_listing}} do |f| %>
+
+	<%= render 'form' %>
+
+<% end %>	
+
 
 <%= link_to 'Show', listing_listing_image_path %> |
 <%= link_to 'Back', listing_listing_images_path %>

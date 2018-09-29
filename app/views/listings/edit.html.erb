@@ -1,9 +1,12 @@
-<div class="buffer">
-  <h3>Edit listing</h3>
-  
-  <%= form_for @listing, url: {action: "update"} do |f| %>
-    <%= render '/listings/form', f: f %>
-  <% end %>
-  <%= link_to 'Back', listings_path %>
+<div class="container">
+	<h3>Edit listing</h3>
+
+	<div id="gallery-edit"> <%= render 'listing_images/detail' %> </div>
+	<div class="clearfix"></div> <br> 
+
+	<%= form_for @listing, url: {action: "update"} do |f| %>
+		<%= render '/listings/form', f: f %>
+	<% end %>
+	<%= link_to 'Back', listings_path %>
   
 </div>
