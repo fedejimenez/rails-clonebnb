@@ -4,6 +4,6 @@ module ApplicationHelper
 	end
 
 	def current_listing
-    	Listing.find(params[:id])
+	    Listing.find(params[:id])
   	end
 end

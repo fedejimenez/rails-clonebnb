@@ -9,10 +9,14 @@
 #   AWS_SECRET_ACCESS_KEY: 'SECRET KEY'
 
 
- GOOGLE_APP_ID: '250844870613-g2t339fuk5blkf2nnt16c5vvfs04ehlb.apps.googleusercontent.com'  # Note the use of the single quotes ' ' here.
- GOOGLE_APP_SECRET: '69nKTwfapBSUREpPR_wbRhJU'
+GOOGLE_APP_ID: '250844870613-g2t339fuk5blkf2nnt16c5vvfs04ehlb.apps.googleusercontent.com'  # Note the use of the single quotes ' ' here.
+GOOGLE_APP_SECRET: '69nKTwfapBSUREpPR_wbRhJU'
 
- FACEBOOK_KEY: '300229577425686'
- FACEBOOK_SECRET: '863acf5ecb21e1214e5c6d58fc29b00a'
+FACEBOOK_KEY: '300229577425686'
+FACEBOOK_SECRET: '863acf5ecb21e1214e5c6d58fc29b00a'
 
- GOOGLE_MAPS_API_KEY: 'AIzaSyAyIOuC6WLUE8taQvrAiUoa5aV6f-b84Xc'
+GOOGLE_MAPS_API_KEY: 'AIzaSyAyIOuC6WLUE8taQvrAiUoa5aV6f-b84Xc'
+
+BRAINTREE_MERCHANT_ID: 't2sy9nwv79mmyszb'
+BRAINTREE_PUBLIC_KEY: 'drnzq7hj6rwvsmt9'
+BRAINTREE_PRIVATE_KEY: 'a984182f686da8bef6e89bbd4e474046'

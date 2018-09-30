@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= current_user.full_name %>
+</p>
+
+<p>
+  <strong>Booking:</strong>
+  <%= @booking.confirmation_number %>
+</p>
+
+<%= link_to 'Edit', edit_booking_path(@booking) %> |
+<%= link_to 'Back', listings_path %>
+

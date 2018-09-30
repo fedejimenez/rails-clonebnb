@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<h1>My bookings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Guest Name</th>
+      <th>Place</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Total Price</th>
+      <th>Confirmation Number</th>
+      <th>Actions</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+  </tbody>
+</table>
+
+<div id = "user-listings">
+  <h4>My bookings: </h4>
+  <table>
+  <thead>
+    <tr>
+      <th>Guest Name</th>
+      <th>Place</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Total Price</th>
+      <th>Confirmation Number</th>
+      <th>Actions</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% current_user.bookings.each do |booking| %>
+      <tr>
+        <td><%= current_user.full_name %></td>
+        <td><%= Listing.find(booking.listing_id.to_s).name %></td>
+        <td><%= booking.time_start %></td>
+        <td><%= booking.time_end %></td>
+        <td><%= booking.amount %></td>
+        <td><%= booking.confirmation_number %></td>
+        <td><%= link_to 'Edit', edit_booking_path(booking.id) %></td>
+        <td><%= link_to 'Destroy', booking_path(booking.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<br>
+
+<%= link_to 'View more homes', listings_path %>

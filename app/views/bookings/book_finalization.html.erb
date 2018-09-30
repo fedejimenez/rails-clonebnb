@@ -2,3 +2,8 @@
   <p>Congrats! You're going to <%=current_listing.city%>!</p>
   <p>Keep the booking confirmation number for your records: <%= @booking.confirmation_number %></p>
 </div>
+
+<div>
+	<%= link_to 'My bookings', bookings_path %>
+	<%= link_to 'View more homes', listings_path %>
+</div>

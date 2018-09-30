@@ -2,7 +2,7 @@ class ListingsController < ApplicationController
   include ListingsHelper
   include ApplicationHelper
 
-  before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :set_listing, only: [:show, :edit, :book, :update, :destroy]
 
   # before_action :listing_from_id , :only => [:show, :edit, :update, :destroy, :reserve]
   # before_action :require_user, :only => [:new, :update, :destroy]
@@ -17,15 +17,15 @@ class ListingsController < ApplicationController
   #   @listings = Listing.all
   # end
 
-  def ajax
-    # the first user from database
-    @user = User.first
-    respont_to do |format|
-      format.js {
-        render :json => @user
-      }
-    end  
-  end
+  # def ajax
+  #   # the first user from database
+  #   @user = User.first
+  #   respont_to do |format|
+  #     format.js {
+  #       render :json => @user
+  #     }
+  #   end  
+  # end
 
   # def index
     # if current_user
@@ -126,35 +126,35 @@ class ListingsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_listing
-      @listing = Listing.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_listing
+    @listing = Listing.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def listing_params
-      params.require(:listing).permit(:name, :place_type, :property_type, :room_number, :bed_number, :guest_number, :country, :state, :city, :zipcode, :address, :price, :description, :user_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def listing_params
+    params.require(:listing).permit(:name, :place_type, :property_type, :room_number, :bed_number, :guest_number, :country, :state, :city, :zipcode, :address, :price, :description, :user_id)
+  end
 
-    def require_permission
-      if !signed_in?
+  def require_permission
+    if !signed_in?
+      flash[:notice] = "Oops, is this where you meant to go?"
+      if params[:id]
+        redirect_to listing_path
+      else
+        redirect_to listings_path
+      end
+    elsif params[:id]
+      if current_user != current_listing.user
         flash[:notice] = "Oops, is this where you meant to go?"
-        if params[:id]
-          redirect_to listing_path
-        else
-          redirect_to listings_path
-        end
-      elsif params[:id]
-        if current_user != current_listing.user
-          flash[:notice] = "Oops, is this where you meant to go?"
-          redirect_to listing_path
-        end
+        redirect_to listing_path
       end
     end
+  end
 
-    def filtering_params(params)
-      params.slice(:property_type, :name, :city, :price, :guest_number, :room_number, :bathrooms)
-    end
+  def filtering_params(params)
+    params.slice(:property_type, :name, :city, :price, :guest_number, :room_number, :bathrooms)
+  end
 end
 
 

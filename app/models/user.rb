@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   include Clearance::User
 
-  has_many :rooms
-  has_many :reservations
+  # has_many :rooms
+  has_many :bookings
   has_many :listings
   # has_secure_password
 

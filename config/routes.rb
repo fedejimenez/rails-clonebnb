@@ -35,6 +35,8 @@ Rails.application.routes.draw do
   resources :listings
   resources :listings, :member => { :reserve => :get }
   resources :reservations
+  resources :search, controller: "search", only: [:index]
+
   
   resources :users
 
@@ -45,6 +47,7 @@ Rails.application.routes.draw do
   get '/listings/:listing_id/listing_images/new' => 'listing_images#create'
   post '/listings/:listing_id/listing_images/:id/edit' => 'listing_images#edit'
   post '/listings/:listing_id/listing_images/:id' => 'listing_images#update'
+  post '/listings/:id' => 'listings#edit'
   # post '/listings/:listing_id/listing_images/edit' => 'listing_images#edit'
   # get '/listings/:listing_id/listing_images/edit' => 'listing_images#edit'
 
@@ -68,12 +71,12 @@ Rails.application.routes.draw do
   get '/bookings/:id/payment_details'=> "bookings#payment_details", as: :payment_details
   post '/bookings/:id/checkout' => 'bookings#checkout'
     
+  resources :bookings, only: [:index, :show, :edit, :destroy]
   # get '/bookings/:id' => 'bookings#book', as: :book
   get '/bookings/:id/dates_confirmation' => 'bookings#dates_confirmation', as: :dates_confirmation
   get '/bookings/:id/book_check' => 'bookings#book_check', as: :book_check
   get '/bookings/:id/book_confirmation' => 'bookings#book_confirmation', as: :book_confirmation
   post '/bookings/:id/book_finalization' => 'bookings#book_finalization', as: :book_finalization
-  post '/listings/:id' => 'listings#edit'
 
   concern :paginatable do
     get '(page/:page)', action: :index, on: :collection, as: 'page'
