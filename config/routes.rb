@@ -71,6 +71,7 @@ Rails.application.routes.draw do
   get '/bookings/:id/payment_details'=> "bookings#payment_details", as: :payment_details
   post '/bookings/:id/checkout' => 'bookings#checkout'
     
+  resources :bookings, only: [:index, :show, :edit, :destroy]
   # get '/bookings/:id' => 'bookings#book', as: :book
   get '/bookings/:id/dates_confirmation' => 'bookings#dates_confirmation', as: :dates_confirmation
   get '/bookings/:id/book_check' => 'bookings#book_check', as: :book_check

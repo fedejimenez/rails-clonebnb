@@ -65,6 +65,7 @@ gem 'mini_magick'
 
 # Use acts as bookable for bookings
 # gem 'acts_as_bookable'
+# problem with activerecord > 5
 
 # Use Braintree for payments
 gem 'braintree'

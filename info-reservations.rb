@@ -92,7 +92,7 @@ e html form
   
    // local: true ----> no ajax (by default form_with uses ajax behaviour)
 
-  <%= form_with scope: :reservation, url: listing_reservation_path(params[:id]), local: true, do |f| %>
+  <%= form_with scope: :reservation, url: listing_reservation_path(params[:id]), local: true do |f| %>
 
 
   <%= f.label :start_date %>
@@ -119,7 +119,7 @@ e html form
   f Reservations controller
 
   def create
- 	reservation = Reservation.new(reervation_param)
+ 	reservation = Reservation.new(reservation_param)
  	reservation.user_id = current_user.id
  	reservation.listing_id = params[:listing_id]
 

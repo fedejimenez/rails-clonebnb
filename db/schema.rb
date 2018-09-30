@@ -10,25 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_27_121907) do
+ActiveRecord::Schema.define(version: 2018_09_30_064217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "acts_as_bookable_bookings", force: :cascade do |t|
-    t.bigint "bookable_id"
-    t.string "bookable_type"
-    t.bigint "booker_id"
-    t.string "booker_type"
-    t.integer "amount"
-    t.text "schedule"
-    t.datetime "time_start"
-    t.datetime "time_end"
-    t.datetime "time"
-    t.datetime "created_at"
-    t.index ["bookable_type", "bookable_id"], name: "index_acts_as_bookable_bookings_bookable"
-    t.index ["booker_type", "booker_id"], name: "index_acts_as_bookable_bookings_booker"
-  end
 
   create_table "amenities", force: :cascade do |t|
     t.boolean "breakfast"
@@ -53,6 +38,20 @@ ActiveRecord::Schema.define(version: 2018_09_27_121907) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_authentications_on_user_id"
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.string "bookable_type"
+    t.string "booker_type"
+    t.integer "amount"
+    t.text "schedule"
+    t.datetime "time_start"
+    t.datetime "time_end"
+    t.datetime "time"
+    t.datetime "created_at"
+    t.string "confirmation_number"
+    t.integer "user_id"
+    t.integer "listing_id"
   end
 
   create_table "keyboard_listings", force: :cascade do |t|
@@ -106,6 +105,7 @@ ActiveRecord::Schema.define(version: 2018_09_27_121907) do
     t.string "photo"
     t.integer "rating", default: 0
     t.text "schedule"
+    t.string "dates", default: [], array: true
   end
 
   create_table "reviews", force: :cascade do |t|
