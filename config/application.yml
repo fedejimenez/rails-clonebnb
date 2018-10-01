@@ -20,3 +20,8 @@ GOOGLE_MAPS_API_KEY: 'AIzaSyAyIOuC6WLUE8taQvrAiUoa5aV6f-b84Xc'
 BRAINTREE_MERCHANT_ID: 't2sy9nwv79mmyszb'
 BRAINTREE_PUBLIC_KEY: 'drnzq7hj6rwvsmt9'
 BRAINTREE_PRIVATE_KEY: 'a984182f686da8bef6e89bbd4e474046'
+
+GMAIL_USERNAME: 'fjclonebnb@gmail.com'
+GMAIL_PASSWORD: 'clonebnb2018'
+
+# REDIS_URL: 'redis://localhost:6379/0/cache'

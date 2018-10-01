@@ -19,6 +19,14 @@ class BookingsController < ApplicationController
     # total_price = 
   end
 
+  def destroy
+    @booking.destroy
+    respond_to do |format|
+      format.html { redirect_to listings_url, notice: 'Booking was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
   def payment_details
     @client_token = Braintree::ClientToken.generate
   end
@@ -61,16 +69,16 @@ class BookingsController < ApplicationController
       # @booking.listing_id = params[:listing_id]
       # @booking = current_user.bookings.last
       @booking.confirmation_number = SecureRandom.hex(5)
+      @booking.save(validate: false)
       
-        # if @booking.save
-          @booking.save(validate: false)
-          # ReservationJob.perform_later(current_user, @booking.confirmation_number)
-          flash[:notice] = "Booking confirmed!"
-        # else
-        #   flash[:notice] = "Looks like something went wrong, try again in a few minutes."
-        #   redirect_to dates_confirmation_path(current_listing.id)
-        # end
-    # end
+      # if @booking.save
+        # ReservationJob.perform_later(current_user, @booking.confirmation_number)
+        ReservationJob.perform_later(@booking.confirmation_number)
+        flash[:notice] = "Booking confirmed!"
+      # else
+        # flash[:notice] = "Looks like something went wrong, try again in a few minutes."
+        # redirect_to dates_confirmation_path(current_listing.id)
+      # end
   end
 
   private
