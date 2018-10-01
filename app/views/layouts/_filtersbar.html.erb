@@ -1,0 +1,125 @@
+<div class="navbar" id="filters-bar">
+
+  <!--City Filter-->
+  <div class="dropdown is-hoverable">
+    <div class="dropdown-trigger">
+      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+        <span>City</span>
+        <span class="icon is-small">
+          <i class="fas fa-angle-down" aria-hidden="true"></i>
+        </span>
+      </button>
+    </div>
+    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+      <div class="dropdown-content">
+        <%= form_for listings_path, method: :get do %>
+          <%= text_field_tag 'city' %>
+          <%= submit_tag("Search") %>        
+        <% end %>
+      </div>
+    </div> 
+  </div>
+    
+  <!--Dates Filter-->
+  <div class="dropdown is-hoverable">
+    <div class="dropdown-trigger">
+      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+        <span>Dates</span>
+        <span class="icon is-small">
+          <i class="fas fa-angle-down" aria-hidden="true"></i>
+        </span>
+      </button>
+    </div>
+    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+      <div class="dropdown-content">
+        <%= form_for listings_path, method: :get do %>
+          <%= date_field_tag 'check_in'%>
+          <%= date_field_tag 'check_out'%>
+          <%= hidden_field(:listing, :dates) %>
+          <%= submit_tag("Search") %>        
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+  <!--Guests Filter-->
+  <div class="dropdown is-hoverable">
+    <div class="dropdown-trigger">
+      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+        <span>Guests</span>
+        <span class="icon is-small">
+          <i class="fas fa-angle-down" aria-hidden="true"></i>
+        </span>
+      </button>
+    </div>
+    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+      <div class="dropdown-content">
+        <%= form_for listings_path, method: :get do %>
+          <%= text_field_tag 'guests' %>
+          <%= submit_tag("Search") %>        
+        <% end %>
+      </div>
+    </div>
+  </div>
+    
+  <!--Bedrooms Filter-->
+  <div class="dropdown is-hoverable">
+    <div class="dropdown-trigger">
+      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+        <span>Bedrooms</span>
+        <span class="icon is-small">
+          <i class="fas fa-angle-down" aria-hidden="true"></i>
+        </span>
+      </button>
+    </div>
+    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+      <div class="dropdown-content">
+        <%= form_for listings_path, method: :get do %>
+          <%= text_field_tag 'bedrooms' %>
+          <%= submit_tag("Search") %>        
+        <% end %>
+      </div>
+    </div>
+  </div>
+    
+  <!--Bathrooms Filter-->
+  <div class="dropdown is-hoverable">
+    <div class="dropdown-trigger">
+      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+        <span>Bathrooms</span>
+        <span class="icon is-small">
+          <i class="fas fa-angle-down" aria-hidden="true"></i>
+        </span>
+      </button>
+    </div>
+    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+      <div class="dropdown-content">
+        <%= form_for listings_path, method: :get do %>
+          <%= text_field_tag 'bathrooms' %>
+          <%= submit_tag("Search") %>        
+        <% end %>
+      </div>
+    </div> 
+  </div>
+    
+  <!--Price Filter-->
+  <div class="dropdown is-hoverable">
+    <div class="dropdown-trigger">
+      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+        <span>Price</span>
+        <span class="icon is-small">
+          <i class="fas fa-angle-down" aria-hidden="true"></i>
+        </span>
+      </button>
+    </div>
+    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+      <div class="dropdown-content">
+        <%= form_for listings_path, method: :get do %>
+          <%= text_field_tag 'price' %>
+          <%= submit_tag("Search") %>        
+        <% end %>
+      </div>
+    </div> 
+  </div>
+
+</div>

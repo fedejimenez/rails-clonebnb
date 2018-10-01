@@ -82,9 +82,9 @@ class Listing < ActiveRecord::Base
   
   # mount_uploaders :photos, PhotoUploader
   
-  # require 'pg_search'
-  # include PgSearch
-  # multisearchable :against => [ :title, :description, :city, :country ]
+  require 'pg_search'
+  include PgSearch
+  multisearchable :against => [ :name, :description, :city, :country ]
   
   has_many :keyword_listings
   has_many :keywords, through: :keyword_listings
