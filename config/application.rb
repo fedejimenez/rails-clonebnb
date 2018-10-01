@@ -17,9 +17,12 @@ module Clonebnb
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-	config.action_mailer.deliver_later_queue_name = 'default_mailer_queue'
+	  config.action_mailer.deliver_later_queue_name = 'default_mailer_queue'
   
   	# Use sidekiq
   	config.active_job.queue_adapter = :sidekiq
+    # config.cache_store = :redis_cache_store
+    config.cache_store = :redis_store, "redis://localhost:6379/0/cache", { expires_in: 90.minutes }
+    config.action_controller.perform_caching = true
   end
 end

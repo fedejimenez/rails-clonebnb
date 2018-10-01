@@ -61,6 +61,15 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  #Sidekiq
+  config.active_job.queue_adapter = :sidekiq
+  #Redis
+  # config.cache_store = :redis_cache_store, { url: ENV['REDIS_URL'] }, { expires_in: 90.minutes }
+  config.cache_store = :redis_cache_store
+  # config.cache_store = :redis_cache_store, {driver: :hiredis, url: redis_servers}
+
+  config.action_controller.perform_caching = true
+
 
   # Use Action-mailer
   # config.action_mailer.delivery_method = :smtp
@@ -73,10 +82,10 @@ Rails.application.configure do
     address:                  "smtp.gmail.com",
     port:                     587,
     domain:                   "gmail.com",
-    # user_name:                ENV['GMAIL_USERNAME'],
-    # password:                 ENV['GMAIL_PASSWORD'],
-    user_name:                'fjclonebnb@gmail.com',
-    password:                 'clonebnb2018',
+    user_name:                ENV['GMAIL_USERNAME'],
+    password:                 ENV['GMAIL_PASSWORD'],
+    # user_name:                'fjclonebnb@gmail.com',
+    # password:                 'clonebnb2018',
     # authentication:           :plain,
     authentication:           :login,
     enable_starttls_auto:     true

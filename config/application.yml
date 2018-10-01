@@ -23,3 +23,5 @@ BRAINTREE_PRIVATE_KEY: 'a984182f686da8bef6e89bbd4e474046'
 
 GMAIL_USERNAME: 'fjclonebnb@gmail.com'
 GMAIL_PASSWORD: 'clonebnb2018'
+
+# REDIS_URL: 'redis://localhost:6379/0/cache'
