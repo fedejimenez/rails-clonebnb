@@ -65,7 +65,7 @@ Rails.application.routes.draw do
   post '/users/:id' => 'users#edit'
 
 
-  get '/search', :controller => 'pages', :action => 'search'
+  # get '/search', :controller => 'pages', :action => 'search'
 
   post '/search' => 'search#search'
   get '/bookings/:id/payment_details'=> "bookings#payment_details", as: :payment_details

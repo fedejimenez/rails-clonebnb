@@ -1,5 +1,6 @@
 module SearchHelper
   def search(terms)
+    puts "inside helper"
     search = params[:search_form].split(" ")
     @search_terms = []
     search.each do |search_term|

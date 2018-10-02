@@ -1,8 +1,12 @@
 Search results:
 
   <div>
+  	<%= puts "results length" %>
+  	<%= puts @results.length %>
     <% if @results.length > 0 %>
       <% @results.each do |result| %>
+        <%= puts "resultadoooo" %>
+        <%= puts result[:searchable_id] %>
         <%= render '/search/results', result: Listing.find(result[:searchable_id])%>
       <% end %>
     <% else %>

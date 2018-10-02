@@ -10,12 +10,15 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require_tree .
+ *= require_self
  */
+
 // @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
+
 @import "nav_bar.scss";
-@import "footer.scss";
 @import "footer.scss";
 @import "listings.scss";
 @import "listing_images.scss";
@@ -23,6 +26,9 @@
 // @import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 // @import url('https://fonts.googleapis.com/css?family=Circular:400,700');
 
+$dark-grey: #616161;
+$light-grey: #bdc3c7;
+$blue: #008489;
 
 body, html {
     font-family: 'Circular', sans-serif;

@@ -2,7 +2,7 @@ class ListingsController < ApplicationController
   include ListingsHelper
   include ApplicationHelper
 
-  before_action :set_listing, only: [:show, :edit, :book, :update, :destroy]
+  before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
   # before_action :listing_from_id , :only => [:show, :edit, :update, :destroy, :reserve]
   # before_action :require_user, :only => [:new, :update, :destroy]
@@ -37,7 +37,9 @@ class ListingsController < ApplicationController
   # end
 
   def index
-    @listings = Listing.where(nil)
+    # @listings = Listing.where(nil)
+    # @listings = Listing.all
+    @listings = Listing.search_cities(params[:search])
     filtering_params(params).each do |k, v|
       @listings = @listings.public_send(k, v) if v.present?
     end
@@ -47,14 +49,14 @@ class ListingsController < ApplicationController
     else
       # search_map(@renters)
     end
-    @listings = Listing.order(:name).page(params[:page]).per(8)
 
+    @listings = Listing.order(:name).page(params[:page]).per(8)
   end
   
   # GET /listings/1
   # GET /listings/1.json
   def show
-    @listing_images = @listing.listing_images.all
+    # @listing_images = @listing.listing_images.all
     # @listing_images = ListingImage.new(listing_image)
 
   end
@@ -92,6 +94,8 @@ class ListingsController < ApplicationController
     if @listing.save
       params[:listing_images]['image'].each do |image|
         @listing_image = @listing.listing_images.create!(:image => image)
+        format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
+        format.json { render :show, status: :created, location: @listing }
       end
       flash[:notice] = "Listing added"
       redirect_to listing_path(@listing.id)

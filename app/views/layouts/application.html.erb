@@ -20,6 +20,64 @@
 <body>
 
 	<%= render "layouts/navbar" %>
+
+<!-- Search with filters bar / -->
+
+  <nav class="navbar is-fixed-top has-navbar-fixed-bottom" role="navigation" aria-label="main navigation">
+    
+    <div class="navbar-brand">
+      <div class="navbar-burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    
+    <div class="navbar-menu">
+      <div class="navbar-start">
+        <div class="navbar-item" id="search-form">
+          <div class="field has-addons">
+            
+            <%= form_tag listings_path, :method => :get  do %>
+              <div class="control has-icons-right">
+                <%= text_field_tag :search, params[:search], placeholder: 'New York, NY', class: 'input', list: "list" %>
+                <datalist id="list"></datalist>
+                <span class="icon is-small is-right">
+                	<%= submit_tag "Search" %>
+                  <i class="fa fa-search fa-lg"></i>
+                </span>
+              </div>
+            <% end %>
+            
+          </div>
+        </div>
+      </div>
+      
+      <div class="navbar-end">
+        
+        <div class="navbar-item" id="profile">
+          <% if signed_in? %>
+            <%= link_to "View Profile", "/users/show" %>
+          <% end %>
+        </div>
+        
+        <div class="navbar-item" id="sign-out-button">
+          <% if signed_in? -%>
+            <%= button_to t(".sign_out"), sign_out_path, method: :delete %>
+          <% else -%>
+            <%= link_to t(".sign_in"), sign_in_path %>
+          <% end -%>
+        </div>
+        
+      </div>
+  </div>
+  <% if url_for(:only_path => true) == "/listings" %>
+    <%= render "/layouts/filtersbar" %>
+  <% end %>
+</nav>
+
+<!--  -->
+
 	<div class="container">
 		<% flash.each do |name, msg| %>
 			<%= content_tag(:div,msg,:id=> "flash_#{name}") %>
