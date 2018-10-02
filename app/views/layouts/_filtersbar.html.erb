@@ -14,6 +14,7 @@
       <div class="dropdown-content">
         <%= form_for listings_path, method: :get do %>
           <%= text_field_tag 'city' %>
+          <%= puts "before search with filters" %>
           <%= submit_tag("Search") %>        
         <% end %>
       </div>

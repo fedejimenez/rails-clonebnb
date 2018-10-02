@@ -60,7 +60,7 @@
   padding: 10px;
   h3{
     font-size: 26px;
-    color: $dark-grey;
+    color: #616161;
     margin-bottom: 24px;
 }}
   
@@ -82,7 +82,7 @@
    }
    } 
 .card-container-description{
-  color: $dark-grey;
+  color: #616161;
   font-size: 14px;
   font-weight: 300;
   span{
@@ -102,12 +102,12 @@
   i{
     font-size: .8rem;
     margin-right: 2px;
-    color: $blue;
+    color: #008489;
   }
 }
 .card-container-comments{
   font-size: .8rem;
-  color: $dark-grey;
+  color: #616161;
 }
   
 /*------MEDIA QUERIES----*/
@@ -115,7 +115,7 @@
 @media (max-width: 1023px){ 
   .nav-logo{
     .icon-menu{
-      color: $dark-grey;
+      color: #616161;
       text-decoration: none;
   }
 }
