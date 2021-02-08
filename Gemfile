@@ -61,7 +61,7 @@ gem 'faker', :git => 'https://github.com/stympy/faker.git'
 gem 'kaminari'
 
 # Use CarrierWave for image uploading
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 # Use mini_magick to resize images
 gem 'mini_magick'
 
